@@ -26,4 +26,9 @@ public class login extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    public void goBack(View v) {
+        Intent intent = new Intent(this, welcomescreen.class);
+        startActivity(intent);
+    }
 }
