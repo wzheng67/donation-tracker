@@ -18,18 +18,6 @@ public class login extends AppCompatActivity {
     }
 
     public void loginAttempt(View v) {
-        EditText user = findViewById(R.id.username);
-        EditText pass = findViewById(R.id.password);
-        if (user.getText().toString().equals("user") && pass.getText().toString().equals("pass")) {
-            Intent intent = new Intent(this, mainApplication.class);
-            startActivity(intent);
-        } else {
-            Intent intent = new Intent(this, failedLogin.class);
-            startActivity(intent);
-        }
-    }
-
-    public void loginAttempt(View v) {
         Model model = Model.getInstance();
         EditText user = findViewById(R.id.username);
         EditText pass = findViewById(R.id.password);

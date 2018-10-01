@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import cs2340.donationtracker.Model.Model;
 import cs2340.donationtracker.Model.User;
@@ -33,7 +34,7 @@ public class registration extends AppCompatActivity {
             Intent intent = new Intent(this, mainApplication.class);
             startActivity(intent);
         } else {
-            EditText fail = findViewById(R.id.fail);
+            TextView fail = findViewById(R.id.fail);
             fail.setText("Registration Failed: Email already in use");
         }
     }
