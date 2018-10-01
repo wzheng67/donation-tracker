@@ -1,4 +1,4 @@
-package cs2340.donationtracker;
+package cs2340.donationtracker.Controllers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import cs2340.donationtracker.Model.Model;
 import cs2340.donationtracker.Model.User;
+import cs2340.donationtracker.R;
 
 public class registration extends AppCompatActivity {
 

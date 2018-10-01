@@ -14,18 +14,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".welcomescreen">
+        <activity android:name=".Controllers.welcomescreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login" />
-        <activity android:name=".failedLogin" />
-        <activity android:name=".mainApplication" />
+        <activity android:name=".Controllers.login" />
+        <activity android:name=".Controllers.failedLogin" />
+        <activity android:name=".Controllers.mainApplication" />
         <activity android:name=".register"></activity>
-        <activity android:name=".registration" />
+        <activity android:name=".Controllers.registration" />
     </application>
 
 </manifest>

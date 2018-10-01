@@ -1,13 +1,13 @@
-package cs2340.donationtracker;
+package cs2340.donationtracker.Controllers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import cs2340.donationtracker.Model.Model;
+import cs2340.donationtracker.R;
 
 public class login extends AppCompatActivity {
 

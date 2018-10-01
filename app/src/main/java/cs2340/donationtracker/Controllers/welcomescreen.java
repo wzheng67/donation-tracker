@@ -1,10 +1,11 @@
-package cs2340.donationtracker;
+package cs2340.donationtracker.Controllers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
+import cs2340.donationtracker.R;
 
 public class welcomescreen extends AppCompatActivity {
 
