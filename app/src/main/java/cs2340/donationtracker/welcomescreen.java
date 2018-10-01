@@ -19,4 +19,9 @@ public class welcomescreen extends AppCompatActivity {
         Intent intent = new Intent(this, login.class);
         startActivity(intent);
     }
+
+    public void goToRegistration(View v) {
+        Intent intent = new Intent(this, registration.class);
+        startActivity(intent);
+    }
 }
