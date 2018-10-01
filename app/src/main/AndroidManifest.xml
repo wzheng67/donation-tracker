@@ -25,6 +25,7 @@
         <activity android:name=".failedLogin" />
         <activity android:name=".mainApplication" />
         <activity android:name=".register"></activity>
+        <activity android:name=".registration" />
     </application>
 
 </manifest>

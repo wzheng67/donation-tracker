@@ -19,13 +19,23 @@ public class registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        String[] arraySpinner = new String[] {
+                "user", "location employee", "admin"
+        };
+        Spinner s = findViewById(R.id.type);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, arraySpinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
     }
 
     public void onAddUser(View v) {
+        Log.d("smt", "got here");
         EditText email = findViewById(R.id.email);
         EditText user = findViewById(R.id.username);
         EditText pass = findViewById(R.id.password);
         Spinner type = findViewById(R.id.type);
+        Log.d("smtg", "got else");
 
         Model model = Model.getInstance();
         User newuser = new User(email.getText().toString(), user.getText().toString(),
