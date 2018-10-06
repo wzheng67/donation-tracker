@@ -24,7 +24,7 @@
         <activity android:name=".Controllers.login" />
         <activity android:name=".Controllers.failedLogin" />
         <activity android:name=".Controllers.mainApplication" />
-        <activity android:name=".register"></activity>
+        <activity android:name=".Controllers.Location" />
         <activity android:name=".Controllers.registration" />
     </application>
 

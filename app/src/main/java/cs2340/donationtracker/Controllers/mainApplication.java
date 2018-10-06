@@ -14,6 +14,10 @@ public class mainApplication extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_application);
     }
+    public void goLocation(View v) {
+        Intent intent = new Intent(this, Location.class);
+        startActivity(intent);
+    }
 
     public void logout(View v) {
         Intent intent = new Intent(this, welcomescreen.class);
