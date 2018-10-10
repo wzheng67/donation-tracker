@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "263757511188",
+    "firebase_url": "https://donation-tracker-56b.firebaseio.com",
+    "project_id": "donation-tracker-56b",
+    "storage_bucket": "donation-tracker-56b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263757511188:android:ff2b70dd4217af16",
+        "android_client_info": {
+          "package_name": "cs2340.donationtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263757511188-vmahmjkpi1inrr4qbvkp35v26ftgbs2f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cs2340.donationtracker",
+            "certificate_hash": "a5c51e2668f45660a35bbf7c910eb312fa8c41d3"
+          }
+        },
+        {
+          "client_id": "263757511188-8256osfvtq78vt95om55hlrbsqkafloh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWdbiaJpK2GTAvzlH4sfOqelZE4rhyj-U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263757511188-8256osfvtq78vt95om55hlrbsqkafloh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

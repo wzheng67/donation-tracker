@@ -20,7 +20,9 @@ import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.R;
 
 public class Location extends AppCompatActivity {
-    private ListView listview;
+    public static List<LocationData> locationList = new ArrayList<>();
+    public ListView listview;
+    private static boolean isCreated = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,22 +32,22 @@ public class Location extends AppCompatActivity {
         listview.setAdapter(locationAdapter);
 
     }
-    public List<LocationData> getLocationData(Context context) {
-
-        List<LocationData> locationList = new ArrayList<>();
-
-        try {
-            CSVReader reader = new CSVReader(new InputStreamReader(context.getAssets().open("LocationData.csv")));
-            String[] nextLine;
-            nextLine = reader.readNext();
-            while ((nextLine = reader.readNext()) != null) {
-                String address = nextLine[4]+ "," + nextLine[5] + "," + nextLine[6] + "," + nextLine[7];
-                locationList.add(new LocationData(nextLine[0], nextLine[1], nextLine[8], nextLine[3], nextLine[2], address, nextLine[9]));
+    public static List<LocationData> getLocationData(Context context) {
+        if (!isCreated) {
+            try {
+                CSVReader reader = new CSVReader(new InputStreamReader(context.getAssets().open("LocationData.csv")));
+                String[] nextLine;
+                nextLine = reader.readNext();
+                while ((nextLine = reader.readNext()) != null) {
+                    String address = nextLine[4] + "," + nextLine[5] + "," + nextLine[6] + "," + nextLine[7];
+                    locationList.add(new LocationData(nextLine[0], nextLine[1], nextLine[8], nextLine[3], nextLine[2], address, nextLine[9]));
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            isCreated = true;
         }
         return locationList;
     }

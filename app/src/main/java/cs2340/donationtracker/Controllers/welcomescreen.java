@@ -12,8 +12,8 @@ public class welcomescreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Location.locationList = Location.getLocationData(this);
         setContentView(R.layout.activity_welcomescreen);
-
     }
 
     public void goToLogin(View v) {
