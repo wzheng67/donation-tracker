@@ -1,6 +1,7 @@
 package cs2340.donationtracker.Model;
 
 public class LocationData {
+    private String Key;
     private String Location_name;
     private String Location_type;
     private String Longitude;
@@ -8,13 +9,22 @@ public class LocationData {
     private String Address;
     private String Phone_number;
 
-    public LocationData(String location_name, String location_type, String longitude, String latitude, String address, String phone_number) {
+    public LocationData(String key, String location_name, String location_type, String longitude, String latitude, String address, String phone_number) {
+        Key = key;
         Location_name = location_name;
         Location_type = location_type;
         Longitude = longitude;
         Latitude = latitude;
         Address = address;
         Phone_number = phone_number;
+    }
+
+    public String getKey() {
+        return Key;
+    }
+
+    public void setKey(String key) {
+        Key = key;
     }
 
     public String getLocation_name() {
