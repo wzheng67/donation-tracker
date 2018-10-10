@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.view.View;
+
+import java.util.HashMap;
+
 import cs2340.donationtracker.Model.AllLocations;
 import cs2340.donationtracker.R;
 
@@ -23,4 +26,5 @@ public class Location extends AppCompatActivity {
         Intent intent = new Intent(this, mainApplication.class);
         startActivity(intent);
     }
+
 }

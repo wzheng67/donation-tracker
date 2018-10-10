@@ -27,7 +27,7 @@ public class AllLocations {
     private AllLocations(Context context) {
         allLocationData = new HashMap<>();
         locationList = new ArrayList<>();
-         // not yet tested
+        // not yet tested
     }
 
     public void loadLocationData(Context context) {
@@ -60,4 +60,6 @@ public class AllLocations {
         }
         return str;
     }
+    //retriview
+    //variable static
 }

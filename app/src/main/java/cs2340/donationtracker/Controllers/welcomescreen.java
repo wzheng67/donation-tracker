@@ -8,7 +8,7 @@ import android.view.View;
 import cs2340.donationtracker.R;
 
 public class welcomescreen extends AppCompatActivity {
-
+    //preCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,4 +25,5 @@ public class welcomescreen extends AppCompatActivity {
         Intent intent = new Intent(this, registration.class);
         startActivity(intent);
     }
+    // setCache
 }
