@@ -26,6 +26,7 @@
         <activity android:name=".Controllers.mainApplication" />
         <activity android:name=".Controllers.Location" />
         <activity android:name=".Controllers.registration" />
+        <activity android:name=".Controllers.Location_display"></activity>
     </application>
 
 </manifest>

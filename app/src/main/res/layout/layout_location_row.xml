@@ -21,8 +21,7 @@
             <TextView
                 android:id="@+id/textView_key_value"
                 android:layout_width="324dp"
-                android:layout_height="wrap_content"
-                android:text="w" />
+                android:layout_height="wrap_content" />
         </TableRow>
 
         <TableRow

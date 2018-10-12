@@ -75,7 +75,7 @@ public class registration extends AppCompatActivity {
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
-
+                Toast.makeText(registration.this, "Google sign-in failed, try it again", Toast.LENGTH_SHORT).show();
                 // ...
             }
         }

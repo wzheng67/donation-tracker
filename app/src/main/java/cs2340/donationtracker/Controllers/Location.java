@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.view.View;
 
@@ -17,6 +18,7 @@ import java.util.List;
 
 import cs2340.donationtracker.Model.LocationAdapter;
 import cs2340.donationtracker.Model.LocationData;
+import cs2340.donationtracker.Model.NameAdapter;
 import cs2340.donationtracker.R;
 
 public class Location extends AppCompatActivity {
@@ -28,9 +30,14 @@ public class Location extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
         listview = (ListView) findViewById(R.id.listview_location);
-        LocationAdapter locationAdapter = new LocationAdapter(this, getLocationData(this), listview);
-        listview.setAdapter(locationAdapter);
-
+        NameAdapter NameAdapter = new NameAdapter(this, getLocationData(this), listview);
+        listview.setAdapter(NameAdapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                goLocationDisplay(position);
+            }
+        });
     }
     public static List<LocationData> getLocationData(Context context) {
         if (!isCreated) {
@@ -53,6 +60,11 @@ public class Location extends AppCompatActivity {
     }
     public void goBack(View v) {
         Intent intent = new Intent(this, mainApplication.class);
+        startActivity(intent);
+    }
+    public void goLocationDisplay(int position) {
+        Intent intent = new Intent(this, Location_display.class);
+        intent.putExtra("Item_position", position);
         startActivity(intent);
     }
 
