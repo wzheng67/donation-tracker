@@ -23,6 +23,22 @@
           }
         },
         {
+          "client_id": "263757511188-dm8rd7d8r8g7maoi7iaq62kpbi1j2ng7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cs2340.donationtracker",
+            "certificate_hash": "0aa79ecb588c6a23735d864661e062df444dec0d"
+          }
+        },
+        {
+          "client_id": "263757511188-l6qb8dhe4m1vufm3mft1eodcds0mmuje.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cs2340.donationtracker",
+            "certificate_hash": "4d502a9e8f522b9900e5d659912c776d62c4d797"
+          }
+        },
+        {
           "client_id": "263757511188-8256osfvtq78vt95om55hlrbsqkafloh.apps.googleusercontent.com",
           "client_type": 3
         }
