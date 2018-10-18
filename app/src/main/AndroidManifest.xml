@@ -26,7 +26,8 @@
         <activity android:name=".Controllers.mainApplication" />
         <activity android:name=".Controllers.Location" />
         <activity android:name=".Controllers.registration" />
-        <activity android:name=".Controllers.Location_display"></activity>
+        <activity android:name=".Controllers.Location_display" />
+        <activity android:name=".Controllers.AddDonation"></activity>
     </application>
 
 </manifest>
