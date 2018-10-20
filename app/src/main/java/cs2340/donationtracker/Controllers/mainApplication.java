@@ -18,6 +18,10 @@ public class mainApplication extends AppCompatActivity {
         Intent intent = new Intent(this, Location.class);
         startActivity(intent);
     }
+    public void goDonation(View v) {
+        Intent intent = new Intent(this, AddDonation.class);
+        startActivity(intent);
+    }
 
     public void logout(View v) {
         Intent intent = new Intent(this, welcomescreen.class);

@@ -1,5 +1,7 @@
 package cs2340.donationtracker.Model;
 
+import cs2340.donationtracker.Controllers.Location;
+
 public class ItemInfo {
     private int hour;
     private int min;
@@ -9,20 +11,28 @@ public class ItemInfo {
 
     private int value;
 
-    private String LocationData;
-    private String ShortDescription;
-    private String FullDescription;
+    private LocationData locationData;
+    private String shortDescription;
+    private String fullDescription;
     private Category category;
     private String otherCategory;
-    private String Comments;
+    private String comments;
 
-    public void setTime(int hour, int min, int year, int month, int day) {
+    public ItemInfo(int hour, int min, int year, int month, int day, int value, LocationData locationData, String shortDescription, String fullDescription, Category category, String otherCategory, String comments) {
         this.hour = hour;
         this.min = min;
         this.year = year;
         this.month = month;
         this.day = day;
+        this.value = value;
+        this.locationData = locationData;
+        this.shortDescription = shortDescription;
+        this.fullDescription = fullDescription;
+        this.category = category;
+        this.otherCategory = otherCategory;
+        this.comments = comments;
     }
+
     public int getHour() {
         return hour;
     }
@@ -71,28 +81,28 @@ public class ItemInfo {
         this.value = value;
     }
 
-    public String getLocationData() {
-        return LocationData;
+    public LocationData getLocationData() {
+        return locationData;
     }
 
-    public void setLocationData(String locationData) {
-        LocationData = locationData;
+    public void setLocationData(LocationData locationData) {
+        this.locationData = locationData;
     }
 
     public String getShortDescription() {
-        return ShortDescription;
+        return shortDescription;
     }
 
     public void setShortDescription(String shortDescription) {
-        ShortDescription = shortDescription;
+        this.shortDescription = shortDescription;
     }
 
     public String getFullDescription() {
-        return FullDescription;
+        return fullDescription;
     }
 
     public void setFullDescription(String fullDescription) {
-        FullDescription = fullDescription;
+        this.fullDescription = fullDescription;
     }
 
     public Category getCategory() {
@@ -112,10 +122,10 @@ public class ItemInfo {
     }
 
     public String getComments() {
-        return Comments;
+        return comments;
     }
 
     public void setComments(String comments) {
-        Comments = comments;
+        this.comments = comments;
     }
 }

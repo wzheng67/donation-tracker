@@ -18,7 +18,7 @@ import cs2340.donationtracker.R;
 public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
 
     private Context context;
-    private List list;
+    private List<ItemInfo> list;
     private ListView listView;
 
     class ItemViewHolder {
@@ -40,41 +40,42 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View rowView = convertView;
-        ItemInfoAdapter.ItemViewHolder viewHolder;
+        ItemViewHolder ViewHolder;
         String Status;
 
         if (rowView == null) {
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             rowView = layoutInflater.inflate(R.layout.layout_donation_item, parent,false);
-            viewHolder = new ItemInfoAdapter.ItemViewHolder();
-            viewHolder.location_key = (TextView) rowView.findViewById(R.id.textView_key_value);
-            viewHolder.location_name = (TextView) rowView.findViewById(R.id.textView_name_value);
-            viewHolder.location_Type = (TextView) rowView.findViewById(R.id.textView_type_value);
-            viewHolder.location_Longitude = (TextView) rowView.findViewById(R.id.textView_longitude_value);
-            viewHolder.location_Latiude = (TextView) rowView.findViewById(R.id.textView_latitude_value);
-            viewHolder.location_address = (TextView) rowView.findViewById(R.id.textView_address_value);
-            viewHolder.location_phone = (TextView) rowView.findViewById(R.id.textView_phone_value);
+            ViewHolder = new ItemInfoAdapter.ItemViewHolder();
 
-            rowView.setTag(viewHolder);
+            ViewHolder.Item_shortDescription = (TextView) rowView.findViewById(R.id.shortDescriptionView_value);
+            ViewHolder.Item_category = (TextView) rowView.findViewById(R.id.categoryView_value);
+            ViewHolder.Item_value = (TextView) rowView.findViewById(R.id.valueView_value);
+            ViewHolder.Item_time_hourMin = (TextView) rowView.findViewById(R.id.timeStampView_value);
+            ViewHolder.Item_time_yearMonthDay = (TextView) rowView.findViewById(R.id.timeStampView_value2);
+            ViewHolder.Item_fullDescription = (TextView) rowView.findViewById(R.id.fullDescription_value);
+            ViewHolder.Item_comments = (TextView) rowView.findViewById(R.id.comments_value);
+            Log.d("viewHolder", "View Holder is created");
+            rowView.setTag(ViewHolder);
             Status = "created";
         } else {
-            viewHolder = (LocationAdapter.LocationViewHolder) rowView.getTag();
+            ViewHolder = (ItemInfoAdapter.ItemViewHolder) rowView.getTag();
             Status = "reused";
         }
         String Tag = rowView.getTag().toString();
         int idx = Tag.indexOf("@");
         String tag = Tag.substring(idx + 1);
 
-        LocationData locationData = (LocationData) list.get(position);
+        ItemInfo itemInfo = (ItemInfo) list.get(position);
+        ViewHolder.Item_shortDescription.setText(itemInfo.getShortDescription());
+        ViewHolder.Item_category.setText(itemInfo.getCategory().toString());
+        ViewHolder.Item_value.setText("" + itemInfo.getValue());
+        ViewHolder.Item_time_hourMin.setText("  " + itemInfo.getHour() + ": " + itemInfo.getMin());
+        ViewHolder.Item_time_yearMonthDay.setText("" + itemInfo.getMonth() + " - " + itemInfo.getDay() + " - " + itemInfo.getYear());
+        ViewHolder.Item_fullDescription.setText(itemInfo.getFullDescription());
+        ViewHolder.Item_comments.setText(itemInfo.getComments());
 
-        viewHolder.location_key.setText(locationData.getKey());
-        viewHolder.location_name.setText(locationData.getLocation_name());
-        viewHolder.location_Type.setText(locationData.getLocation_type());
-        viewHolder.location_Longitude.setText(locationData.getLongitude());
-        viewHolder.location_Latiude.setText(locationData.getLatitude());
-        viewHolder.location_address.setText(locationData.getAddress());
-        viewHolder.location_phone.setText(locationData.getPhone_number());
-        Log.d("@@@", "row view is " + Status + ", tag = " + tag);
+        Log.d("@@", "row view is " + Status + ", tag = " + tag);
         return rowView;
     }
 }

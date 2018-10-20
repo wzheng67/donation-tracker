@@ -74,4 +74,8 @@ public class LocationData {
     public void setPhone_number(String phone_number) {
         Phone_number = phone_number;
     }
+
+    public String toString() {
+        return Location_name;
+    }
 }

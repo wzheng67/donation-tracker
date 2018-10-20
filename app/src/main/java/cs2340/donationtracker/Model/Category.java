@@ -6,7 +6,7 @@ public enum Category {
 
     private String category;
 
-    Category(String s) {this.category = s}
+    Category(String s) {this.category = s;}
 
     @Override
     public String toString() {return category;}
