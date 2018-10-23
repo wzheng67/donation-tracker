@@ -5,7 +5,7 @@ import android.app.Activity;
 
 import cs2340.donationtracker.R;
 
-public class Registation_admin extends Activity {
+public class Registration_admin extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

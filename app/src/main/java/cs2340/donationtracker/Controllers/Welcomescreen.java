@@ -7,8 +7,7 @@ import android.view.View;
 
 import cs2340.donationtracker.R;
 
-public class welcomescreen extends AppCompatActivity {
-    //preCreate
+public class Welcomescreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,13 +16,12 @@ public class welcomescreen extends AppCompatActivity {
     }
 
     public void goToLogin(View v) {
-        Intent intent = new Intent(this, login.class);
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
 
     public void goToRegistration(View v) {
-        Intent intent = new Intent(this, registration.class);
+        Intent intent = new Intent(this, Registration_type.class);
         startActivity(intent);
     }
-    // setCache
 }

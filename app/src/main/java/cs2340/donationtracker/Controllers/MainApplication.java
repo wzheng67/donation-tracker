@@ -7,7 +7,7 @@ import android.view.View;
 
 import cs2340.donationtracker.R;
 
-public class mainApplication extends AppCompatActivity {
+public class MainApplication extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class mainApplication extends AppCompatActivity {
     }
 
     public void logout(View v) {
-        Intent intent = new Intent(this, welcomescreen.class);
+        Intent intent = new Intent(this, Welcomescreen.class);
         startActivity(intent);
     }
 }

@@ -7,7 +7,7 @@ import android.view.View;
 
 import cs2340.donationtracker.R;
 
-public class failedLogin extends AppCompatActivity {
+public class FailedLogin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class failedLogin extends AppCompatActivity {
     }
 
     public void goBackToLogin(View v) {
-        Intent intent = new Intent(this, login.class);
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
 }

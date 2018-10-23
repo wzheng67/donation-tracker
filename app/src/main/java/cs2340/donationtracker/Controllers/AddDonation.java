@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -18,7 +17,6 @@ import java.util.List;
 
 import cs2340.donationtracker.Model.Category;
 import cs2340.donationtracker.Model.ItemInfo;
-import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.R;
 
 public class AddDonation extends AppCompatActivity {
@@ -69,7 +67,7 @@ public class AddDonation extends AppCompatActivity {
         startActivity(intent);
     }
     public void cancel(View v) {
-        Intent intent = new Intent(this, mainApplication.class);
+        Intent intent = new Intent(this, MainApplication.class);
         startActivity(intent);
     }
 

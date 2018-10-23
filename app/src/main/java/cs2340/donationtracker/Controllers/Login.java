@@ -9,7 +9,7 @@ import android.widget.EditText;
 import cs2340.donationtracker.Model.Model;
 import cs2340.donationtracker.R;
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,16 +22,16 @@ public class login extends AppCompatActivity {
         EditText user = findViewById(R.id.username);
         EditText pass = findViewById(R.id.password);
         if (model.findUserByUserPass(user.getText().toString(), pass.getText().toString())) {
-            Intent intent = new Intent(this, mainApplication.class);
+            Intent intent = new Intent(this, MainApplication.class);
             startActivity(intent);
         } else {
-            Intent intent = new Intent(this, failedLogin.class);
+            Intent intent = new Intent(this, FailedLogin.class);
             startActivity(intent);
         }
     }
 
     public void goBack(View v) {
-        Intent intent = new Intent(this, welcomescreen.class);
+        Intent intent = new Intent(this, Welcomescreen.class);
         startActivity(intent);
     }
 }

@@ -16,7 +16,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import cs2340.donationtracker.Model.LocationAdapter;
 import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.Model.NameAdapter;
 import cs2340.donationtracker.R;
@@ -59,7 +58,7 @@ public class Location extends AppCompatActivity {
         return locationList;
     }
     public void goBack(View v) {
-        Intent intent = new Intent(this, mainApplication.class);
+        Intent intent = new Intent(this, MainApplication.class);
         startActivity(intent);
     }
     public void goLocationDisplay(int position) {
