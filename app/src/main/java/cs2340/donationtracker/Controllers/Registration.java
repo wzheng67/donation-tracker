@@ -120,17 +120,17 @@ public class Registration extends AppCompatActivity {
         });
 
     }
-    private void signUpUser(String email, String password) {
+    /*private void signUpUser(String email, String password) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 FirebaseUser user = task.getResult().getUser();
-                User userModel = new User(user.getEmail());
+                //User userModel = new User(user.getEmail());
             }
         })
-    }
+    }*/
     /*
     public void onAddUser(View v) {
         Log.d("smt", "got here");
