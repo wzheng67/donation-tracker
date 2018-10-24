@@ -21,7 +21,7 @@ public class Welcomescreen extends AppCompatActivity {
     }
 
     public void goToRegistration(View v) {
-        Intent intent = new Intent(this, Registration_type.class);
+        Intent intent = new Intent(this, Registration.class);
         startActivity(intent);
     }
 }

@@ -18,6 +18,7 @@ import java.util.List;
 
 import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.Model.NameAdapter;
+import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
 public class Location extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class Location extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
+
         listview = (ListView) findViewById(R.id.listview_location);
         NameAdapter NameAdapter = new NameAdapter(this, getLocationData(this), listview);
         listview.setAdapter(NameAdapter);
@@ -38,6 +40,7 @@ public class Location extends AppCompatActivity {
             }
         });
     }
+
     public static List<LocationData> getLocationData(Context context) {
         if (!isCreated) {
             try {
@@ -57,6 +60,14 @@ public class Location extends AppCompatActivity {
         }
         return locationList;
     }
+//    private List<LocationData> filter (List<LocationData> list) {
+//        if (Registration.userType == User_type.ADMIN
+//                && Registration.userType == User_type.MANAGER) {
+//            return list;
+//        } else if (Registration.userType == User_type.ADMIN) {
+//            return
+//        }
+//    }
     public void goBack(View v) {
         Intent intent = new Intent(this, MainApplication.class);
         startActivity(intent);

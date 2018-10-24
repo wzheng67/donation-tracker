@@ -16,7 +16,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import cs2340.donationtracker.Model.Category;
+import cs2340.donationtracker.Model.CurrentUser;
 import cs2340.donationtracker.Model.ItemInfo;
+import cs2340.donationtracker.Model.LocationData;
+import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
 public class AddDonation extends AppCompatActivity {
@@ -163,7 +166,11 @@ public class AddDonation extends AppCompatActivity {
         locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                itemInfo.setLocationData(Location.locationList.get(position));
+                if (CurrentUser.getInstance().getUserType() == CurrentUser.getInstance().getUserType()) {
+                    itemInfo.setLocationData(CurrentUser.getInstance().getLocationData());
+                } else {
+                    itemInfo.setLocationData(Location.locationList.get(position));
+                }
             }
 
             @Override
@@ -203,11 +210,17 @@ public class AddDonation extends AppCompatActivity {
         ArrayAdapter yearAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, yearList);
         yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         yearSpinner.setAdapter(yearAdapter);
-
-        ArrayAdapter locationAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, Location.locationList);
-        locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        locationSpinner.setAdapter(locationAdapter);
-
+        if (CurrentUser.getInstance().getUserType() == User_type.LOCATION_EMPLOYEE) {
+            List list = new LinkedList();
+            list.add(CurrentUser.getInstance().getLocationData());
+            ArrayAdapter locationAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
+            locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            locationSpinner.setAdapter(locationAdapter);
+        } else {
+            ArrayAdapter locationAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Location.locationList);
+            locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            locationSpinner.setAdapter(locationAdapter);
+        }
         ArrayAdapter categroryAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, categoryList);
         categroryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(categroryAdapter);

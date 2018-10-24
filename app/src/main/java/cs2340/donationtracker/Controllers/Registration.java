@@ -20,6 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -29,9 +30,11 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Array;
 
-import cs2340.donationtracker.Model.Model;
-//import cs2340.donationtracker.Model.User;
+import cs2340.donationtracker.Model.CurrentUser;
+import cs2340.donationtracker.Model.Sha256;
+import cs2340.donationtracker.Model.User;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
@@ -39,7 +42,10 @@ public class Registration extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 10;
     private FirebaseAuth mAuth;
-    private User_type userType;
+    private DatabaseReference databaseReference;
+    private Spinner locationSpinner;
+    private TextView textView;
+    private String TAG = "Reg";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,13 +83,13 @@ public class Registration extends AppCompatActivity {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(Registration.this, "Google sign-in was successful", Toast.LENGTH_SHORT).show();
-                            goToNextView();
+                            goToMainApplication_user();
                         } else {
                             Toast.makeText(Registration.this, "Google sign-in failed, try it again", Toast.LENGTH_SHORT).show();
                         }
@@ -93,65 +99,50 @@ public class Registration extends AppCompatActivity {
     public void onAddUser(View v) {
         Log.d("smt", "got here");
         EditText email = findViewById(R.id.email);
-        final EditText user = findViewById(R.id.username);
+        EditText user = findViewById(R.id.email);
         EditText pass = findViewById(R.id.password);
         Spinner type = findViewById(R.id.type);
+        signUpUser(email.getText().toString(), pass.getText().toString(), user.getText().toString(), CurrentUser.getInstance().getUserType());
         Log.d("smtg", "got else");
+    }
 
-        final User_type[] userTypes = User_type.values();
-        type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (userTypes[position] == User_type.ADMIN) {
-                    goToRegistration_admin();
-                } else if (userTypes[position] == User_type.MANAGER) {
-                    userType = User_type.MANAGER;
-                } else if (userTypes[position] == User_type.LOCATION_EMPLOYEE) {
-                    userType = User_type.LOCATION_EMPLOYEE;
-                } else if (userTypes[position] == User_type.USER){
-                    userType = User_type.USER;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                userType = User_type.USER;
-            }
-        });
+    private void signUpUser(String email, String password, String username, final User_type user_type) {
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        final User userModel = new User("", Sha256.encrypt(password), username, user_type);
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("sign-up", "createUserWithEmail:success");
+                            FirebaseUser user = task.getResult().getUser();
+                            userModel.setEmail(user.getEmail());
+                            databaseReference.child("account").child(user.getUid()).setValue(userModel);
+                            CurrentUser.getInstance().setUserType(user_type);
+                            CurrentUser.getInstance().setCurrUser(userModel);
+                            if (CurrentUser.getInstance().getUserType() == User_type.USER) {
+                                goToMainApplication_user();
+                            } else {
+                                goToMainApplication();
+                            }
+                        } else {
+                            Log.w("", "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(Registration.this, "The email address is already in use",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(this, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("", "createUserWithEmail:failure" + e.getMessage());
+                        Toast.makeText(Registration.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
 
     }
-    /*private void signUpUser(String email, String password) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                FirebaseUser user = task.getResult().getUser();
-                //User userModel = new User(user.getEmail());
-            }
-        })
-    }*/
-    /*
-    public void onAddUser(View v) {
-        Log.d("smt", "got here");
-        EditText email = findViewById(R.id.email);
-        EditText user = findViewById(R.id.username);
-        EditText pass = findViewById(R.id.password);
-        Spinner type = findViewById(R.id.type);
-        Log.d("smtg", "got else");
-
-        Model model = Model.getInstance();
-        User newuser = new User(email.getText().toString(), user.getText().toString(),
-                pass.getText().toString(), type.getSelectedItem().toString());
-        if (model.addUser(newuser)) {
-            Intent intent = new Intent(this, MainApplication.class);
-            startActivity(intent);
-        } else {
-            TextView fail = findViewById(R.id.fail);
-            fail.setText("Registration Failed: Email already in use");
-        }ß
-    }
-    */
     private void initGoogleSignInButton() {
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -169,14 +160,60 @@ public class Registration extends AppCompatActivity {
         });
     }
     private void initTypeSprinner() {
-
+        locationSpinner = findViewById(R.id.regist_location);
+        textView = findViewById(R.id.manage);
         Spinner s = findViewById(R.id.type);
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User_type.values());
+        final ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User_type.values());
+        final ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, Location.locationList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
+        final User_type[] userTypes = User_type.values();
+        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (userTypes[position] == User_type.ADMIN) {
+                    goToRegistration_admin();
+                    locationSpinner.setVisibility(View.GONE);
+                    textView.setVisibility(View.GONE);
+                } else if (userTypes[position] == User_type.MANAGER) {
+                    CurrentUser.getInstance().setUserType(User_type.MANAGER);
+                    locationSpinner.setVisibility(View.GONE);
+                    textView.setVisibility(View.GONE);
+                } else if (userTypes[position] == User_type.LOCATION_EMPLOYEE) {
+                    CurrentUser.getInstance().setUserType(User_type.LOCATION_EMPLOYEE);
+                    locationSpinner.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.VISIBLE);
+                    locationSpinner.setAdapter(adapter2);
+                    locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            CurrentUser.getInstance().setLocationData(Location.locationList.get(position));
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+                            CurrentUser.getInstance().setLocationData(Location.locationList.get(0));
+                        }
+                    });
+                } else if (userTypes[position] == User_type.USER){
+                    CurrentUser.getInstance().setUserType(User_type.USER);
+                    locationSpinner.setVisibility(View.GONE);
+                    textView.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                CurrentUser.getInstance().setUserType(User_type.USER);
+            }
+        });
     }
-    private void goToNextView() {
+    private void goToMainApplication() {
         Intent intent = new Intent(this, MainApplication.class);
+        startActivity(intent);
+    }
+    private void goToMainApplication_user() {
+        Intent intent = new Intent(this, MainApplication_user.class);
         startActivity(intent);
     }
     private void goToRegistration_admin() {

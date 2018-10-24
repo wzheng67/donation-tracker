@@ -17,4 +17,6 @@
     <string name="title_activity_registration_type">registration_type</string>
     <string name="title_activity_admin">Admin</string>
     <string name="title_activity_registation_manager">Registation_manager</string>
+    <string name="title_activity_main_application_user">MainApplication_user</string>
+    <string name="title_activity_manager_selection">Manager_selection</string>
 </resources>

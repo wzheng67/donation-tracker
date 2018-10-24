@@ -9,13 +9,19 @@ public class User implements Parcelable{
     private String email;
     private String username;
     private String password;
-    private String type;
+    private User_type type;
 
-    public User(String email, String username, String password, String type) {
+    public User(String email, String password, String username, User_type type) {
         this.email = email;
         this.username = username;
         this.password = password;
         this.type = type;
+    }
+    public User() {
+
+    }
+    public User(String email, User_type type) {
+        this (email, "", "", type);
     }
 
     public String getEmail() { return email; }
@@ -27,8 +33,13 @@ public class User implements Parcelable{
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    public String getType() { return type; }
-    public void setType(String type) { this.type = type; }
+    public User_type getType() {
+        return type;
+    }
+
+    public void setType(User_type type) {
+        this.type = type;
+    }
 
     @Override
     public String toString() {
@@ -45,7 +56,6 @@ public class User implements Parcelable{
         email = in.readString();
         username = in.readString();
         password = in.readString();
-        type = in.readString();
     }
 
     @Override
@@ -58,7 +68,6 @@ public class User implements Parcelable{
         dest.writeString(email);
         dest.writeString(username);
         dest.writeString(password);
-        dest.writeString(type);
     }
 
     public static final Parcelable.Creator<User> CREATOR
