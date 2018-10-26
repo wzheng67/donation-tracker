@@ -8,17 +8,31 @@
     tools:context=".Controllers.MainApplication">
 
     <Button
+        android:id="@+id/button_checkItems"
+        android:layout_width="231dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:onClick="goCheckDonation"
+        android:text="Check Donation Items"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_locationInfo" />
+
+    <Button
         android:id="@+id/button_add_donation"
         android:layout_width="230dp"
-        android:layout_height="51dp"
+        android:layout_height="56dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:onClick="goDonation"
         android:text="Add Donation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_locationInfo" />
+        app:layout_constraintTop_toBottomOf="@+id/button_checkItems" />
 
     <TextView
         android:id="@+id/textView"
@@ -26,9 +40,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:text="Welcome to the Main Application!"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:onClick="logout"
         android:text="Logout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +67,7 @@
         android:layout_height="51dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="48dp"
         android:onClick="goLocation"
         android:text="Check Location infomation"
         app:layout_constraintEnd_toEndOf="parent"

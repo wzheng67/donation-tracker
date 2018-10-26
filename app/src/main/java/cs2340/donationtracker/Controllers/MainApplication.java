@@ -28,6 +28,11 @@ public class MainApplication extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goCheckDonation(View v) {
+        Intent intent = new Intent(this, CheckDonation.class);
+        startActivity(intent);
+    }
+
     public void logout(View v) {
         Intent intent = new Intent(this, Welcomescreen.class);
         FirebaseAuth.getInstance().signOut();

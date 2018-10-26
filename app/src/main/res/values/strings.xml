@@ -19,4 +19,5 @@
     <string name="title_activity_registation_manager">Registation_manager</string>
     <string name="title_activity_main_application_user">MainApplication_user</string>
     <string name="title_activity_manager_selection">Manager_selection</string>
+    <string name="title_activity_check_donation">CheckDonation</string>
 </resources>

@@ -35,7 +35,10 @@
             android:label="@string/title_activity_main_application_user" />
         <activity
             android:name=".Controllers.Manager_selection"
-            android:label="@string/title_activity_manager_selection"></activity>
+            android:label="@string/title_activity_manager_selection" />
+        <activity
+            android:name=".Controllers.CheckDonation"
+            android:label="@string/title_activity_check_donation"></activity>
     </application>
 
 </manifest>
