@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import cs2340.donationtracker.Model.CurrentUser;
 import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.Model.NameAdapter;
 import cs2340.donationtracker.Model.User_type;
@@ -69,8 +70,13 @@ public class Location extends AppCompatActivity {
 //        }
 //    }
     public void goBack(View v) {
-        Intent intent = new Intent(this, MainApplication.class);
-        startActivity(intent);
+        if (CurrentUser.getInstance().getUserType() == User_type.USER) {
+            Intent intent = new Intent(this, MainApplication_user.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, MainApplication.class);
+            startActivity(intent);
+        }
     }
     public void goLocationDisplay(int position) {
         Intent intent = new Intent(this, Location_display.class);
