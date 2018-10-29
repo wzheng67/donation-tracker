@@ -30,7 +30,6 @@ import cs2340.donationtracker.R;
 
 public class AddDonation extends AppCompatActivity {
 
-    private final List<String> timeStamp = new LinkedList<>();
     private final List<Category> categoryList = Arrays.asList(Category.values());
 
     Spinner locationSpinner;
@@ -69,7 +68,7 @@ public class AddDonation extends AppCompatActivity {
     }
 
     public void goToNextView() {
-        Intent intent = new Intent(this, Location.class);
+        Intent intent = new Intent(this, MainApplication.class);
         startActivity(intent);
     }
     public void cancel(View v) {
@@ -92,11 +91,8 @@ public class AddDonation extends AppCompatActivity {
         locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (CurrentUser.getInstance().getUserType() == CurrentUser.getInstance().getUserType()) {
-                    itemInfo.setLocationData(CurrentUser.getInstance().getLocationData());
-                } else {
                     itemInfo.setLocationData(Location.locationList.get(position));
-                }
+                    System.out.println(itemInfo.getLocationData());
             }
 
             @Override

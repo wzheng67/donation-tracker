@@ -11,6 +11,8 @@ public class CurrentItems {
     }
 
     private List<ItemInfo> itemList = new LinkedList<>();
+
+
     private CurrentItems() {
     }
 

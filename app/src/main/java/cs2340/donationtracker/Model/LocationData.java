@@ -9,6 +9,9 @@ public class LocationData {
     private String Address;
     private String Phone_number;
 
+    public LocationData() {
+
+    }
     public LocationData(String key, String location_name, String location_type, String longitude, String latitude, String address, String phone_number) {
         Key = key;
         Location_name = location_name;
