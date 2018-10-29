@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,7 +32,7 @@ import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
-public class CheckDonation extends Activity {
+public class CheckDonation extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private List<String> searchList;
     private List<String> locationList;

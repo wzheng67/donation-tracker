@@ -16,9 +16,9 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="101dp"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal" />
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:srcCompat="@android:drawable/ic_menu_camera" />
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -30,8 +30,8 @@
 
                     <TextView
                         android:id="@+id/SDTitle"
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="87dp"
+                        android:layout_height="27dp"
                         android:layout_weight="1"
                         android:text="Item :"
                         android:textSize="18sp" />
@@ -51,8 +51,8 @@
 
                     <TextView
                         android:id="@+id/Categrory"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="87dp"
+                        android:layout_height="27dp"
                         android:layout_weight="1"
                         android:text="Categrory :"
                         android:textSize="18sp" />
@@ -72,8 +72,8 @@
 
                     <TextView
                         android:id="@+id/Value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
                         android:layout_weight="1"
                         android:text="Value ($) :"
                         android:textSize="18sp" />
@@ -93,11 +93,11 @@
                     android:layout_height="60dp">
 
                     <TextView
-                        android:id="@+id/TimeStamp"
-                        android:layout_width="110dp"
-                        android:layout_height="match_parent"
+                        android:id="@+id/timeStamp"
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
                         android:layout_weight="1"
-                        android:text="Time Stamp :"
+                        android:text="Time :"
                         android:textSize="18sp" />
 
                     <TextView
