@@ -12,6 +12,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import cs2340.donationtracker.Model.CurrentItems;
 import cs2340.donationtracker.Model.ItemInfo;
 import cs2340.donationtracker.Model.ItemInfoAdapter;
 import cs2340.donationtracker.Model.LocationAdapter;
@@ -36,7 +37,7 @@ public class Location_display extends AppCompatActivity {
 
         ListView itemListview = (ListView) findViewById(R.id.itemInfo_display);
         LinkedList<ItemInfo> itemList = new LinkedList<>();
-        for (ItemInfo i : AddDonation.Itemlist) {
+        for (ItemInfo i : CurrentItems.getInstance().getItemList()) {
             if(i.getLocationData() == Location.locationList.get(position)) {
                 itemList.add(i);
             }

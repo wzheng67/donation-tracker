@@ -65,7 +65,6 @@ public class Login extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     User mUser = dataSnapshot.getValue(User.class);
-                                    System.out.println(mUser.getType()+" adfasfsf");
                                     CurrentUser.getInstance().setUserType(mUser.getType());
                                     if (mUser.getType() == User_type.USER) {
                                         goToMainApplication_user();

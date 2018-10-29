@@ -25,8 +25,7 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
         public TextView Item_shortDescription;
         public TextView Item_category;
         public TextView Item_value;
-        public TextView Item_time_hourMin;
-        public TextView Item_time_yearMonthDay;
+        public TextView Item_timeStamp;
         public TextView Item_fullDescription;
         public TextView Item_comments;
     }
@@ -51,8 +50,7 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
             ViewHolder.Item_shortDescription = (TextView) rowView.findViewById(R.id.shortDescriptionView_value);
             ViewHolder.Item_category = (TextView) rowView.findViewById(R.id.categoryView_value);
             ViewHolder.Item_value = (TextView) rowView.findViewById(R.id.valueView_value);
-            ViewHolder.Item_time_hourMin = (TextView) rowView.findViewById(R.id.timeStampView_value);
-            ViewHolder.Item_time_yearMonthDay = (TextView) rowView.findViewById(R.id.timeStampView_value2);
+            ViewHolder.Item_timeStamp = (TextView) rowView.findViewById(R.id.timeStampView_value);
             ViewHolder.Item_fullDescription = (TextView) rowView.findViewById(R.id.fullDescription_value);
             ViewHolder.Item_comments = (TextView) rowView.findViewById(R.id.comments_value);
             Log.d("viewHolder", "View Holder is created");
@@ -70,8 +68,7 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
         ViewHolder.Item_shortDescription.setText(itemInfo.getShortDescription());
         ViewHolder.Item_category.setText(itemInfo.getCategory().toString());
         ViewHolder.Item_value.setText("" + itemInfo.getValue());
-        ViewHolder.Item_time_hourMin.setText("  " + itemInfo.getHour() + ": " + itemInfo.getMin());
-        ViewHolder.Item_time_yearMonthDay.setText("" + itemInfo.getMonth() + " - " + itemInfo.getDay() + " - " + itemInfo.getYear());
+        ViewHolder.Item_timeStamp.setText(itemInfo.getTimeStamp());
         ViewHolder.Item_fullDescription.setText(itemInfo.getFullDescription());
         ViewHolder.Item_comments.setText(itemInfo.getComments());
 

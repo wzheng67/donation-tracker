@@ -11,11 +11,17 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
 import cs2340.donationtracker.Model.Category;
+import cs2340.donationtracker.Model.CurrentItems;
 import cs2340.donationtracker.Model.CurrentUser;
 import cs2340.donationtracker.Model.ItemInfo;
 import cs2340.donationtracker.Model.LocationData;
@@ -23,19 +29,10 @@ import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
 public class AddDonation extends AppCompatActivity {
-    public static List<ItemInfo> Itemlist = new LinkedList<>();
-    private final List<String> hourList = new LinkedList<>();
-    private final List<String> minList = new LinkedList<>();
-    private final List<String> monthList = new LinkedList<>();
-    private final List<String> dayList = new LinkedList<>();
-    private final List<String> yearList = new LinkedList<>();
+
+    private final List<String> timeStamp = new LinkedList<>();
     private final List<Category> categoryList = Arrays.asList(Category.values());
 
-    Spinner hourSpinner;
-    Spinner minSpinner;
-    Spinner daySpinner;
-    Spinner monthSpinner;
-    Spinner yearSpinner;
     Spinner locationSpinner;
     Spinner categorySpinner;
 
@@ -45,12 +42,14 @@ public class AddDonation extends AppCompatActivity {
     EditText comments;
 
     ItemInfo itemInfo;
+
+    private DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_donation);
 
-        init();
         initSpinners();
         buildSpinners();
 
@@ -59,12 +58,16 @@ public class AddDonation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getTexts();
-                Itemlist.add(itemInfo);
+                String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(Calendar.getInstance().getTime());
+                itemInfo.setTimeStamp(timeStamp);
+                CurrentItems.getInstance().getItemList().add(itemInfo);
+                addItemIntoFirebase(timeStamp);
                 Toast.makeText(AddDonation.this, "Donation Item was made successfully", Toast.LENGTH_SHORT).show();
                 goToNextView();
             }
         });
     }
+
     public void goToNextView() {
         Intent intent = new Intent(this, Location.class);
         startActivity(intent);
@@ -74,94 +77,17 @@ public class AddDonation extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void init() {
-        for (int i = 0; i < 24; i++) {
-            hourList.add("" + i);
-        }
-        for (int i = 0; i < 60; i++) {
-            minList.add("" + i);
-        }
-        for (int i = 1; i <= 12; i++) {
-            monthList.add("" + i);
-        }
-        for (int i = 1; i <= 29; i++) {
-            dayList.add("" + i);
-        }
-        String year = new java.text.SimpleDateFormat("yyyy").format(new java.util.Date());
-        for (int i = 2009; i <= Integer.parseInt(year); i++) {
-            yearList.add("" + i);
-        }
+    private void addItemIntoFirebase(String timeStamp) {
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        databaseReference.child("item").child(timeStamp).setValue(itemInfo);
     }
+
     private void initSpinners() {
-        hourSpinner = (Spinner) findViewById(R.id.hourSpinner);
-        minSpinner = (Spinner) findViewById(R.id.minuteSpinner);
-        daySpinner = (Spinner) findViewById(R.id.daySpinner);
-        monthSpinner = (Spinner) findViewById(R.id.monthSpinner);
-        yearSpinner = (Spinner) findViewById(R.id.yearSpinner);
         locationSpinner = (Spinner) findViewById(R.id.locationSpinner);
         categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
 
-        itemInfo = new ItemInfo(0,0,0,0,0,0,null,"","",null,"","");
-
-        hourSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                itemInfo.setHour(Integer.parseInt(hourList.get(position)));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                itemInfo.setHour(0);
-            }
-        });
-
-        minSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                itemInfo.setMin(Integer.parseInt(minList.get(position)));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                itemInfo.setMin(0);
-            }
-        });
-
-        daySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                itemInfo.setDay(Integer.parseInt(dayList.get(position)));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                itemInfo.setDay(1);
-            }
-        });
-
-        monthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                itemInfo.setMonth(Integer.parseInt(monthList.get(position)));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                itemInfo.setMonth(1);
-            }
-        });
-
-        yearSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                itemInfo.setYear(Integer.parseInt(yearList.get(position)));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                itemInfo.setYear(2009);
-            }
-        });
+        itemInfo = new ItemInfo("",0,null,"","",null,"","");
 
         locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -191,25 +117,6 @@ public class AddDonation extends AppCompatActivity {
         });
     }
     private void buildSpinners() {
-        ArrayAdapter hourAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, hourList);
-        hourAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        hourSpinner.setAdapter(hourAdapter);
-
-        ArrayAdapter minAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, minList);
-        minAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        minSpinner.setAdapter(minAdapter);
-
-        ArrayAdapter dayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, dayList);
-        dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        daySpinner.setAdapter(dayAdapter);
-
-        ArrayAdapter monthAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, monthList);
-        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        monthSpinner.setAdapter(monthAdapter);
-
-        ArrayAdapter yearAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, yearList);
-        yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        yearSpinner.setAdapter(yearAdapter);
         if (CurrentUser.getInstance().getUserType() == User_type.LOCATION_EMPLOYEE) {
             List list = new LinkedList();
             list.add(CurrentUser.getInstance().getLocationData());

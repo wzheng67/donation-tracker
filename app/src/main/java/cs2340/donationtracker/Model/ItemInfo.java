@@ -3,11 +3,7 @@ package cs2340.donationtracker.Model;
 import cs2340.donationtracker.Controllers.Location;
 
 public class ItemInfo {
-    private int hour;
-    private int min;
-    private int year;
-    private int month;
-    private int day;
+    private String timeStamp;
 
     private int value;
 
@@ -17,13 +13,11 @@ public class ItemInfo {
     private Category category;
     private String otherCategory;
     private String comments;
+    public ItemInfo() {
 
-    public ItemInfo(int hour, int min, int year, int month, int day, int value, LocationData locationData, String shortDescription, String fullDescription, Category category, String otherCategory, String comments) {
-        this.hour = hour;
-        this.min = min;
-        this.year = year;
-        this.month = month;
-        this.day = day;
+    }
+    public ItemInfo(String timeStamp, int value, LocationData locationData, String shortDescription, String fullDescription, Category category, String otherCategory, String comments) {
+        this.timeStamp = timeStamp;
         this.value = value;
         this.locationData = locationData;
         this.shortDescription = shortDescription;
@@ -33,44 +27,12 @@ public class ItemInfo {
         this.comments = comments;
     }
 
-    public int getHour() {
-        return hour;
+    public String getTimeStamp() {
+        return timeStamp;
     }
 
-    public void setHour(int hour) {
-        this.hour = hour;
-    }
-
-    public int getMin() {
-        return min;
-    }
-
-    public void setMin(int min) {
-        this.min = min;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
-    public int getDay() {
-        return day;
-    }
-
-    public void setDay(int day) {
-        this.day = day;
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
     public int getValue() {
