@@ -27,7 +27,10 @@ public class MainApplication extends AppCompatActivity {
         Intent intent = new Intent(this, AddDonation.class);
         startActivity(intent);
     }
-
+    public void goMap(View v) {
+        Intent intent = new Intent(this, MapLocation.class);
+        startActivity(intent);
+    }
     public void goCheckDonation(View v) {
         Intent intent = new Intent(this, CheckDonation.class);
         startActivity(intent);

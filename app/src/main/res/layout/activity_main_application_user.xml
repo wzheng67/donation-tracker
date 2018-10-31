@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Controllers.MainApplication_user">
 
+    <Button
+        android:id="@+id/button_map_user"
+        android:layout_width="230dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="goMap"
+        android:text="See Google Map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_checkItems_user" />
+
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
@@ -37,7 +50,7 @@
         android:id="@+id/button8"
         android:layout_width="231dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="220dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
@@ -47,8 +60,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_checkItems_user"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintTop_toBottomOf="@+id/button_map_user"
+        app:layout_constraintVertical_bias="0.038" />
 
     <Button
         android:id="@+id/button_locationInfo3"

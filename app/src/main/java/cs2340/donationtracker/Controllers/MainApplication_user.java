@@ -24,6 +24,10 @@ public class MainApplication_user extends Activity {
         Intent intent = new Intent(this, CheckDonation.class);
         startActivity(intent);
     }
+    public void goMap(View v) {
+        Intent intent = new Intent(this, MapLocation.class);
+        startActivity(intent);
+    }
     public void logout(View v) {
         Intent intent = new Intent(this, Welcomescreen.class);
         FirebaseAuth.getInstance().signOut();
