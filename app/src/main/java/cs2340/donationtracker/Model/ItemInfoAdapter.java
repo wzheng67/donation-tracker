@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
         public TextView Item_timeStamp;
         public TextView Item_fullDescription;
         public TextView Item_comments;
+        public ImageView Item_image;
     }
     public ItemInfoAdapter(Context context, List<ItemInfo> list, ListView listView) {
         super(context, 0, list);
@@ -53,6 +55,7 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
             ViewHolder.Item_timeStamp = (TextView) rowView.findViewById(R.id.timeStampView_value);
             ViewHolder.Item_fullDescription = (TextView) rowView.findViewById(R.id.fullDescription_value);
             ViewHolder.Item_comments = (TextView) rowView.findViewById(R.id.comments_value);
+            ViewHolder.Item_image = (ImageView) rowView.findViewById(R.id.imageView);
             Log.d("viewHolder", "View Holder is created");
             rowView.setTag(ViewHolder);
             Status = "created";

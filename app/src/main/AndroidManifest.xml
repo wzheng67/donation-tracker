@@ -7,18 +7,25 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <permission
-
         android:name="cs2340.donationtracker.locationapi.maps.permission.MAPS_RECEIVE"
-
         android:protectionLevel="signature" />
+
     <uses-permission android:name="com.cs2340.donationtracker.locationapi.maps.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera2" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -27,14 +34,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="cs2340.donationtracker"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+
+        </provider>
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAjgXlQR16kIgHSFym1Myw6_2ygnHPPkTQ" />
-        <activity android:name=".Controllers.Welcomescreen">
 
+        <activity android:name=".Controllers.Welcomescreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -59,8 +79,11 @@
         <activity
             android:name=".Controllers.CheckDonation"
             android:label="@string/title_activity_check_donation" />
-        <activity android:name=".Controllers.MapLocation"></activity>
-    </application>
+        <activity android:name=".Controllers.MapLocation" />
+        <activity android:name=".Controllers.ImagePopUp"/>
+        <activity android:name=".Controllers.CameraCropActivity"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
 
+    </application>
 
 </manifest>

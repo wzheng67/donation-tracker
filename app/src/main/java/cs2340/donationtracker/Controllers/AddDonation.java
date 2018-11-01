@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -40,6 +41,8 @@ public class AddDonation extends AppCompatActivity {
     EditText value;
     EditText comments;
 
+    ImageView imageView;
+
     ItemInfo itemInfo;
 
     private DatabaseReference databaseReference;
@@ -51,6 +54,13 @@ public class AddDonation extends AppCompatActivity {
 
         initSpinners();
         buildSpinners();
+        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToCameraCrop();
+            }
+        });
 
         Button button = (Button) findViewById(R.id.addButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +76,10 @@ public class AddDonation extends AppCompatActivity {
             }
         });
     }
-
+    public void goToCameraCrop() {
+        Intent intent = new Intent(this, CameraCropActivity.class);
+        startActivity(intent);
+    }
     public void goToNextView() {
         Intent intent = new Intent(this, MainApplication.class);
         startActivity(intent);
