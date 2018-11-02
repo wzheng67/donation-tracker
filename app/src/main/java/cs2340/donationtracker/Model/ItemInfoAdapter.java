@@ -34,13 +34,10 @@ import java.util.List;
 import cs2340.donationtracker.R;
 
 public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
+
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageReference = storage.getReferenceFromUrl("gs://donation-tracker-56b.appspot.com").child("images");
-
-    //다운로드할 파일을 가르키는 참조 만들기
     StorageReference pathReference;
-
-
 
     private String imageName;
     private Context context;

@@ -2,7 +2,6 @@ package cs2340.donationtracker.Controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -180,11 +179,7 @@ public class CheckDonation extends AppCompatActivity {
             } else {
                 return false;
             }
-            System.out.println(a +" 111111");
-            System.out.println(b +" 222222");
-            System.out.println(a.equals(b) + "비교");
             if (a.equals(b)) {
-                System.out.println("통과");
                 return true;
             } else {
                 return false;

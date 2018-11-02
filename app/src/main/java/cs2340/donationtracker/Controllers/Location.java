@@ -61,14 +61,6 @@ public class Location extends AppCompatActivity {
         }
         return locationList;
     }
-//    private List<LocationData> filter (List<LocationData> list) {
-//        if (Registration.userType == User_type.ADMIN
-//                && Registration.userType == User_type.MANAGER) {
-//            return list;
-//        } else if (Registration.userType == User_type.ADMIN) {
-//            return
-//        }
-//    }
     public void goBack(View v) {
         if (CurrentUser.getInstance().getUserType() == User_type.USER) {
             Intent intent = new Intent(this, MainApplication_user.class);

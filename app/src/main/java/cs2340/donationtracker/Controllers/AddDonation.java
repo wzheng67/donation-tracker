@@ -35,7 +35,6 @@ import cs2340.donationtracker.Model.Category;
 import cs2340.donationtracker.Model.CurrentItems;
 import cs2340.donationtracker.Model.CurrentUser;
 import cs2340.donationtracker.Model.ItemInfo;
-import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
@@ -93,67 +92,59 @@ public class AddDonation extends AppCompatActivity {
                 goToNextView();
             }
         });
-        // Cam
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == 1){
             if(resultCode == RESULT_OK){
-                //데이터 받기
                 filePath = data.getParcelableExtra("albumURI");
                 imageView.setImageURI(filePath);
             }
         }
     }
     private void uploadFile() {
-        //업로드할 파일이 있으면 수행
         if (filePath != null) {
-            //업로드 진행 Dialog 보이기
 
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("업로드중...");
+            progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            //storage
             FirebaseStorage storage = FirebaseStorage.getInstance();
 
-            //Unique한 파일명을 만들자.
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMHH_mmss");
             Date now = new Date();
             final String filename = formatter.format(now) + ".jpeg";
             itemInfo.setImageName(filename);
-            //storage 주소와 폴더 파일명을 지정해 준다.
+
             StorageReference storageRef = storage.getReferenceFromUrl("gs://donation-tracker-56b.appspot.com").child("images/" + filename);
-            //올라가거라...
+
             storageRef.putFile(filePath)
-                    //성공시
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            progressDialog.dismiss(); //업로드 진행 Dialog 상자 닫기
-                            Toast.makeText(getApplicationContext(), "업로드 완료!", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                            Toast.makeText(getApplicationContext(), "Uploaded!", Toast.LENGTH_SHORT).show();
                         }
                     })
-                    //실패시
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "업로드 실패!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Uploading failed.", Toast.LENGTH_SHORT).show();
                         }
                     })
                     //진행중
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            @SuppressWarnings("VisibleForTests") //이걸 넣어 줘야 아랫줄에 에러가 사라진다. 넌 누구냐?
+                            @SuppressWarnings("VisibleForTests")
                                     double progress = (100 * taskSnapshot.getBytesTransferred()) /  taskSnapshot.getTotalByteCount();
                             //dialog에 진행률을 퍼센트로 출력해 준다
                             progressDialog.setMessage("Uploaded " + ((int) progress) + "% ...");
                         }
                     });
         } else {
-            Toast.makeText(getApplicationContext(), "파일을 먼저 선택하세요.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Choose a file first.", Toast.LENGTH_SHORT).show();
         }
     }
 

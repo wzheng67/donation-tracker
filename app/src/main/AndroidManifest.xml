@@ -70,19 +70,14 @@
         <activity android:name=".Controllers.Registration" />
         <activity android:name=".Controllers.Location_display" />
         <activity android:name=".Controllers.AddDonation" />
-        <activity android:name=".Controllers.Registration_type" />
         <activity android:name=".Controllers.Registration_admin" />
         <activity
             android:name=".Controllers.MainApplication_user"
             android:label="@string/title_activity_main_application_user" />
         <activity
-            android:name=".Controllers.Manager_selection"
-            android:label="@string/title_activity_manager_selection" />
-        <activity
             android:name=".Controllers.CheckDonation"
             android:label="@string/title_activity_check_donation" />
         <activity android:name=".Controllers.MapLocation" />
-        <activity android:name=".Controllers.ImagePopUp"/>
         <activity android:name=".Controllers.CameraCropActivity"
             android:theme="@style/Theme.AppCompat.Dialog"/>
 

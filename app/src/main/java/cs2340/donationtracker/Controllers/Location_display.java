@@ -35,16 +35,6 @@ public class Location_display extends AppCompatActivity {
         LocationAdapter locationAdapter = new LocationAdapter(this, list, listview);
         listview.setAdapter(locationAdapter);
 
-        ListView itemListview = (ListView) findViewById(R.id.itemInfo_display);
-        LinkedList<ItemInfo> itemList = new LinkedList<>();
-        for (ItemInfo i : CurrentItems.getInstance().getItemList()) {
-            if(i.getLocationData() == Location.locationList.get(position)) {
-                itemList.add(i);
-            }
-        }
-        ItemInfoAdapter itemInfoAdapter = new ItemInfoAdapter(this, itemList, itemListview);
-        itemListview.setAdapter(itemInfoAdapter);
-
         Button back = (Button) findViewById(R.id.button_Ldisplay_Back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
