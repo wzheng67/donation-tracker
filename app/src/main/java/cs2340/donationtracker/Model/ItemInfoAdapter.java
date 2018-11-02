@@ -39,7 +39,6 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
     StorageReference storageReference = storage.getReferenceFromUrl("gs://donation-tracker-56b.appspot.com").child("images");
     StorageReference pathReference;
 
-    private String imageName;
     private Context context;
     private List<ItemInfo> list;
     private ListView listView;
@@ -96,21 +95,21 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
         ViewHolder.Item_timeStamp.setText(itemInfo.getTimeStamp().substring(0,16));
         ViewHolder.Item_fullDescription.setText(itemInfo.getFullDescription());
         ViewHolder.Item_comments.setText(itemInfo.getComments());
-        pathReference = storageReference.child(itemInfo.getImageName());
-        System.out.println(itemInfo.getImageName());
-        pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Bitmap bitmap = loadBitmap(uri.toString());
-                ViewHolder.Item_image.setImageBitmap(bitmap);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                e.printStackTrace();
-            }
-        });
-
+        if (!itemInfo.getImageName().equals("")) {
+            pathReference = storageReference.child(itemInfo.getImageName());
+            pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Bitmap bitmap = loadBitmap(uri.toString());
+                    ViewHolder.Item_image.setImageBitmap(bitmap);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }
         Log.d("@@", "row view is " + Status + ", tag = " + tag);
         return rowView;
     }
@@ -120,38 +119,27 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
         Bitmap bm = null;
         InputStream is = null;
         BufferedInputStream bis = null;
-        try
-        {
+        try {
             URLConnection conn = new URL(url).openConnection();
             conn.connect();
             is = conn.getInputStream();
             bis = new BufferedInputStream(is, 8192);
             bm = BitmapFactory.decodeStream(bis);
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
         }
         finally {
-            if (bis != null)
-            {
-                try
-                {
+            if (bis != null) {
+                try {
                     bis.close();
-                }
-                catch (IOException e)
-                {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
-            if (is != null)
-            {
-                try
-                {
+            } if (is != null) {
+                try {
                     is.close();
-                }
-                catch (IOException e)
-                {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
