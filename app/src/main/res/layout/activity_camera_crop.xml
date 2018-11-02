@@ -9,14 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/iv_view"
-        android:layout_width="125dp"
-        android:layout_height="113dp" />
-
     <Button
         android:id="@+id/btn_album"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="앨범열기" />
+
+    <ImageView
+        android:id="@+id/iv_view"
+        android:layout_width="125dp"
+        android:layout_height="113dp" />
+
 </LinearLayout>

@@ -175,6 +175,10 @@ public class CameraCropActivity extends AppCompatActivity
                     try {
                         Log.i("REQUEST_TAKE_PHOTO", "OK");
                         galleryAddPic();
+                        Intent intent = new Intent();
+                        intent.putExtra("albumURI", imageUri);
+                        setResult(RESULT_OK, intent);
+                        finish();
                         iv_view.setImageURI(imageUri);
                     } catch (Exception e) {
                         Log.e("REQUEST_TAKE_PHOTO", e.toString());
@@ -205,6 +209,12 @@ public class CameraCropActivity extends AppCompatActivity
                 if (resultCode == Activity.RESULT_OK) {
 
                     galleryAddPic();
+                    Intent intent = new Intent();
+                    intent.putExtra("albumURI", albumURI);
+                    setResult(RESULT_OK, intent);
+
+                    //액티비티(팝업) 닫기
+                    finish();
                     iv_view.setImageURI(albumURI);
                 }
                 break;

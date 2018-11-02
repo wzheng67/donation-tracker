@@ -13,10 +13,12 @@ public class ItemInfo {
     private Category category;
     private String otherCategory;
     private String comments;
+    private String imageName;
+
     public ItemInfo() {
 
     }
-    public ItemInfo(String timeStamp, int value, LocationData locationData, String shortDescription, String fullDescription, Category category, String otherCategory, String comments) {
+    public ItemInfo(String timeStamp, int value, LocationData locationData, String shortDescription, String fullDescription, Category category, String otherCategory, String comments, String imageName) {
         this.timeStamp = timeStamp;
         this.value = value;
         this.locationData = locationData;
@@ -25,6 +27,7 @@ public class ItemInfo {
         this.category = category;
         this.otherCategory = otherCategory;
         this.comments = comments;
+        this.imageName = imageName;
     }
 
     public String getTimeStamp() {
@@ -89,5 +92,13 @@ public class ItemInfo {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }

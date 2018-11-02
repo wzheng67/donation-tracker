@@ -1,6 +1,12 @@
 package cs2340.donationtracker.Model;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -11,13 +17,32 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 import cs2340.donationtracker.R;
 
 public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageReference = storage.getReferenceFromUrl("gs://donation-tracker-56b.appspot.com").child("images");
 
+    //다운로드할 파일을 가르키는 참조 만들기
+    StorageReference pathReference;
+
+
+
+    private String imageName;
     private Context context;
     private List<ItemInfo> list;
     private ListView listView;
@@ -31,19 +56,19 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
         public TextView Item_comments;
         public ImageView Item_image;
     }
-    public ItemInfoAdapter(Context context, List<ItemInfo> list, ListView listView) {
+    public ItemInfoAdapter(final Context context, List<ItemInfo> list, ListView listView) {
         super(context, 0, list);
         this.context = context;
         this.list = list;
         this.listView = listView;
+
     }
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View rowView = convertView;
-        ItemViewHolder ViewHolder;
+        final ItemViewHolder ViewHolder;
         String Status;
-
         if (rowView == null) {
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             rowView = layoutInflater.inflate(R.layout.layout_donation_item, parent,false);
@@ -74,8 +99,66 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
         ViewHolder.Item_timeStamp.setText(itemInfo.getTimeStamp().substring(0,16));
         ViewHolder.Item_fullDescription.setText(itemInfo.getFullDescription());
         ViewHolder.Item_comments.setText(itemInfo.getComments());
+        pathReference = storageReference.child(itemInfo.getImageName());
+        System.out.println(itemInfo.getImageName());
+        pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Bitmap bitmap = loadBitmap(uri.toString());
+                ViewHolder.Item_image.setImageBitmap(bitmap);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         Log.d("@@", "row view is " + Status + ", tag = " + tag);
         return rowView;
+    }
+
+    public Bitmap loadBitmap(String url)
+    {
+        Bitmap bm = null;
+        InputStream is = null;
+        BufferedInputStream bis = null;
+        try
+        {
+            URLConnection conn = new URL(url).openConnection();
+            conn.connect();
+            is = conn.getInputStream();
+            bis = new BufferedInputStream(is, 8192);
+            bm = BitmapFactory.decodeStream(bis);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
+            if (bis != null)
+            {
+                try
+                {
+                    bis.close();
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            if (is != null)
+            {
+                try
+                {
+                    is.close();
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return bm;
     }
 }
