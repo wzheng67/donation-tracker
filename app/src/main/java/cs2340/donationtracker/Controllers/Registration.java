@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class Registration extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private Spinner locationSpinner;
     private TextView textView;
+    private ImageView imageView;
     private String TAG = "Reg";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +101,7 @@ public class Registration extends AppCompatActivity {
     public void onAddUser(View v) {
         Log.d("smt", "got here");
         EditText email = findViewById(R.id.email);
-        EditText user = findViewById(R.id.email);
+        EditText user = findViewById(R.id.name);
         EditText pass = findViewById(R.id.password);
         Spinner type = findViewById(R.id.type);
         signUpUser(email.getText().toString(), pass.getText().toString(), user.getText().toString(), CurrentUser.getInstance().getUserType());
@@ -162,6 +164,8 @@ public class Registration extends AppCompatActivity {
     private void initTypeSprinner() {
         locationSpinner = findViewById(R.id.regist_location);
         textView = findViewById(R.id.manage);
+        imageView = findViewById(R.id.map);
+
         Spinner s = findViewById(R.id.type);
         final ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User_type.values());
         final ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, Location.locationList);
@@ -174,15 +178,15 @@ public class Registration extends AppCompatActivity {
                 if (userTypes[position] == User_type.ADMIN) {
                     goToRegistration_admin();
                     locationSpinner.setVisibility(View.GONE);
-                    textView.setVisibility(View.GONE);
+                    imageView.setVisibility(View.GONE);
                 } else if (userTypes[position] == User_type.MANAGER) {
                     CurrentUser.getInstance().setUserType(User_type.MANAGER);
                     locationSpinner.setVisibility(View.GONE);
-                    textView.setVisibility(View.GONE);
+                    imageView.setVisibility(View.GONE);
                 } else if (userTypes[position] == User_type.LOCATION_EMPLOYEE) {
                     CurrentUser.getInstance().setUserType(User_type.LOCATION_EMPLOYEE);
                     locationSpinner.setVisibility(View.VISIBLE);
-                    textView.setVisibility(View.VISIBLE);
+                    imageView.setVisibility(View.VISIBLE);
                     locationSpinner.setAdapter(adapter2);
                     locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
@@ -198,7 +202,7 @@ public class Registration extends AppCompatActivity {
                 } else if (userTypes[position] == User_type.USER){
                     CurrentUser.getInstance().setUserType(User_type.USER);
                     locationSpinner.setVisibility(View.GONE);
-                    textView.setVisibility(View.GONE);
+                    imageView.setVisibility(View.GONE);
                 }
             }
 
