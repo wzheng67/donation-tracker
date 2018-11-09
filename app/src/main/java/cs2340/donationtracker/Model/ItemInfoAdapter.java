@@ -33,7 +33,7 @@ import java.util.List;
 
 import cs2340.donationtracker.R;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings("ALL")
 public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
 
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -93,7 +93,9 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
         ViewHolder.Item_shortDescription.setText(itemInfo.getShortDescription());
         ViewHolder.Item_category.setText(itemInfo.getCategory().toString());
         ViewHolder.Item_value.setText("" + itemInfo.getValue());
-        ViewHolder.Item_timeStamp.setText(itemInfo.getTimeStamp().substring(0,16));
+        int subStringStart = 0;
+        int subStringEnd = 16;
+        ViewHolder.Item_timeStamp.setText(itemInfo.getTimeStamp().substring(subStringStart, subStringEnd));
         ViewHolder.Item_fullDescription.setText(itemInfo.getFullDescription());
         ViewHolder.Item_comments.setText(itemInfo.getComments());
         if (!itemInfo.getImageName().equals("")) {
@@ -124,7 +126,8 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
             URLConnection conn = new URL(url).openConnection();
             conn.connect();
             is = conn.getInputStream();
-            bis = new BufferedInputStream(is, 8192);
+            int bufferSize = 8192;
+            bis = new BufferedInputStream(is, bufferSize);
             bm = BitmapFactory.decodeStream(bis);
         }
         catch (Exception e) {

@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
+@SuppressWarnings("ChainedMethodCall")
 public class User implements Parcelable{
     private String email;
     private String username;
@@ -49,6 +50,7 @@ public class User implements Parcelable{
     @Override
     public boolean equals(Object o) {
         User c = (User) o;
+        //noinspection ChainedMethodCall
         return (c.getEmail().equals(email) && c.getUsername().equals(username));
     }
 

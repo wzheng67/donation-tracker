@@ -31,7 +31,7 @@ import android.widget.Toast;
 
 import cs2340.donationtracker.R;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings("ALL")
 public class CameraCropActivity extends AppCompatActivity
 {
     private static final int MY_PERMISSION_CAMERA = 1111;
@@ -96,7 +96,6 @@ public class CameraCropActivity extends AppCompatActivity
             }
         } else {
             Toast.makeText(this, "Cannot access to the storage of this device.", Toast.LENGTH_SHORT).show();
-            return;
         }
     }
 

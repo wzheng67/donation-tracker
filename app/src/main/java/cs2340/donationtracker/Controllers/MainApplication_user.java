@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("ChainedMethodCall")
 public class MainApplication_user extends Activity {
 
     @Override

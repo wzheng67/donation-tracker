@@ -35,10 +35,11 @@ import cs2340.donationtracker.Model.Category;
 import cs2340.donationtracker.Model.CurrentItems;
 import cs2340.donationtracker.Model.CurrentUser;
 import cs2340.donationtracker.Model.ItemInfo;
+import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"SpellCheckingInspection", "FeatureEnvy", "ChainedMethodCall"})
 public class AddDonation extends AppCompatActivity {
 
     private final List<Category> categoryList = Arrays.asList(Category.values());
@@ -55,8 +56,6 @@ public class AddDonation extends AppCompatActivity {
 
     ItemInfo itemInfo;
     private Uri filePath;
-
-    private DatabaseReference databaseReference;
 
     private static final int MY_PERMISSION_CAMERA = 1111;
     private static final int REQUEST_TAKE_PHOTO = 2222;
@@ -160,7 +159,7 @@ public class AddDonation extends AppCompatActivity {
     }
 
     private void addItemIntoFirebase(String timeStamp) {
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
         databaseReference.child("item").child(timeStamp).setValue(itemInfo);
     }
@@ -175,7 +174,6 @@ public class AddDonation extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     itemInfo.setLocationData(Location.locationList.get(position));
-                    System.out.println(itemInfo.getLocationData());
             }
 
             @Override
@@ -197,9 +195,9 @@ public class AddDonation extends AppCompatActivity {
     }
     private void buildSpinners() {
         if (CurrentUser.getInstance().getUserType() == User_type.LOCATION_EMPLOYEE) {
-            List list = new LinkedList();
+            List <LocationData>list = new LinkedList<>();
             list.add(CurrentUser.getInstance().getLocationData());
-            ArrayAdapter locationAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
+            ArrayAdapter locationAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
             locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             locationSpinner.setAdapter(locationAdapter);
         } else {

@@ -26,6 +26,7 @@ import cs2340.donationtracker.Model.User;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("ChainedMethodCall")
 public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     DatabaseReference databaseReference;

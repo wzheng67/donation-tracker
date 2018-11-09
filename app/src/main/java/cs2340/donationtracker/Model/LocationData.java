@@ -1,5 +1,6 @@
 package cs2340.donationtracker.Model;
 
+@SuppressWarnings("TypeMayBeWeakened")
 public class LocationData {
     private String Key;
     private String Location_name;

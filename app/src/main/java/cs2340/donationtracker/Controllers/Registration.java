@@ -39,7 +39,7 @@ import cs2340.donationtracker.Model.User;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings("ALL")
 public class Registration extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 10;
@@ -109,6 +109,7 @@ public class Registration extends AppCompatActivity {
         Log.d("smtg", "got else");
     }
 
+    @SuppressWarnings("FeatureEnvy")
     private void signUpUser(String email, String password, String username, final User_type user_type) {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -162,6 +163,7 @@ public class Registration extends AppCompatActivity {
             }
         });
     }
+    @SuppressWarnings("FeatureEnvy")
     private void initTypeSpinner() {
         locationSpinner = findViewById(R.id.regist_location);
         textView = findViewById(R.id.manage);
@@ -173,6 +175,7 @@ public class Registration extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
         final User_type[] userTypes = User_type.values();
+        //noinspection FeatureEnvy
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

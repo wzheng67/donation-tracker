@@ -32,7 +32,7 @@ public class Location_display extends AppCompatActivity {
 
         LinkedList<LocationData> list = new LinkedList<>();
         list.add(Location.locationList.get(position));
-        LocationAdapter locationAdapter = new LocationAdapter(this, list, listview);
+        @SuppressWarnings("TypeMayBeWeakened") LocationAdapter locationAdapter = new LocationAdapter(this, list, listview);
         listview.setAdapter(locationAdapter);
 
         Button back = (Button) findViewById(R.id.button_Ldisplay_Back);

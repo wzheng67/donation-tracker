@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("ALL")
 public class LocationAdapter extends ArrayAdapter<LocationData> {
     private Context context;
     private List list;

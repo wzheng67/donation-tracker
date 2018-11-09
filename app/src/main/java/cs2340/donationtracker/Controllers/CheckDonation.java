@@ -32,8 +32,8 @@ import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("ChainedMethodCall")
 public class CheckDonation extends AppCompatActivity {
-    private DatabaseReference databaseReference;
     private List<String> searchList;
     private List<String> locationList;
     private String currentCategory;
@@ -59,7 +59,7 @@ public class CheckDonation extends AppCompatActivity {
         currentCategory = ALL_Categories;
         currentLocation = ALL_LOCATIONS;
         initCategoryAndLocationList();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("item").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -95,7 +95,7 @@ public class CheckDonation extends AppCompatActivity {
         textView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if ((event.getAction() == KeyEvent.ACTION_DOWN && (keyCode == KeyEvent.KEYCODE_ENTER)) ) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     searchKeyword = textView.getText().toString();
                     display();
                     return true;
@@ -106,7 +106,7 @@ public class CheckDonation extends AppCompatActivity {
     }
     private void initCategorySpinner() {
         Spinner categorySpinner = findViewById(R.id.categorySpinner);
-        ArrayAdapter categoryAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, searchList);
+        ArrayAdapter categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, searchList);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(categoryAdapter);
 
@@ -125,7 +125,7 @@ public class CheckDonation extends AppCompatActivity {
         });
 
         Spinner locationSpinner = findViewById(R.id.locationSpinner);
-        ArrayAdapter locationAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, locationList);
+        ArrayAdapter locationAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, locationList);
         locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(locationAdapter);
 
@@ -143,12 +143,12 @@ public class CheckDonation extends AppCompatActivity {
             }
         });
     }
+    @SuppressWarnings("FeatureEnvy")
     private void display() {
         ListView itemListView = (ListView) findViewById(R.id.listview_location);
         List<ItemInfo> tempList = new LinkedList<>();
 
         for (ItemInfo i : CurrentItems.getInstance().getItemList()) {
-            System.out.println(i.getLocationData());
             if (currentCategory.equals(ALL_Categories)
                     && isValidKeyword(i.getShortDescription())
                     && currentLocation.equals(ALL_LOCATIONS)) {
@@ -167,7 +167,7 @@ public class CheckDonation extends AppCompatActivity {
                 tempList.add(i);
             }
         }
-        ItemInfoAdapter itemInfoAdapter = new ItemInfoAdapter(this, tempList, itemListView);
+        @SuppressWarnings("TypeMayBeWeakened") ItemInfoAdapter itemInfoAdapter = new ItemInfoAdapter(this, tempList, itemListView);
         itemListView.setAdapter(itemInfoAdapter);
     }
     private boolean isValidKeyword(String i) {
@@ -179,11 +179,7 @@ public class CheckDonation extends AppCompatActivity {
             } else {
                 return false;
             }
-            if (a.equals(b)) {
-                return true;
-            } else {
-                return false;
-            }
+            return a.equals(b);
         } else {
             return true;
         }
