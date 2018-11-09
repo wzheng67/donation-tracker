@@ -25,13 +25,13 @@ public class LocationAdapter extends ArrayAdapter<LocationData> {
     private ListView listView;
 
     class LocationViewHolder {
-        public TextView location_key;
-        public TextView location_name;
-        public TextView location_Type;
-        public TextView location_Longitude;
-        public TextView location_Latiude;
-        public TextView location_address;
-        public TextView location_phone;
+        private TextView location_key;
+        private TextView location_name;
+        private TextView location_Type;
+        private TextView location_Longitude;
+        private TextView location_Latiude;
+        private TextView location_address;
+        private TextView location_phone;
     }
 
     /**
