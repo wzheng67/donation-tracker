@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 public class DonationXUnitTest {
     Sha256 hashFunction;
     Verification verification;
-    Model model;
+    
     @Before
     public void setUp() {
         hashFunction = new Sha256();
