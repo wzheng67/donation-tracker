@@ -3,9 +3,17 @@ package cs2340.donationtracker.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public class Model {
     /** Singleton instance */
     private static final Model _instance = new Model();
+
+    /**
+     * getter for
+     * @return
+     */
     public static Model getInstance() { return _instance; }
 
     /** holds the list of all courses */
@@ -26,6 +34,7 @@ public class Model {
         users.add(user);
         return true;
     }
+
 
     public User findUserByEmail(String email) {
         for (User s : users) {

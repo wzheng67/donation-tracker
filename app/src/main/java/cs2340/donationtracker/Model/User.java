@@ -4,7 +4,9 @@ package cs2340.donationtracker.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-
+/**
+ * implementation of user class
+ */
 public class User implements Parcelable{
     private String email;
     private String username;
@@ -17,35 +19,88 @@ public class User implements Parcelable{
         this.password = password;
         this.type = type;
     }
+
+    /**
+     * an arg constructor of User
+     */
     public User() {
 
     }
+
+    /**
+     * constructor of User
+     * @param email user's email
+     * @param type user's type
+     */
     public User(String email, User_type type) {
         this (email, "", "", type);
     }
 
+    /**
+     * getter for email
+     * @return email
+     */
     public String getEmail() { return email; }
+
+    /**
+     * setter for email
+     * @param email user's email
+     */
     public void setEmail(String email) { this.email = email; }
 
+    /**
+     * getter for username
+     * @return username
+     */
     public String getUsername() { return username; }
+
+    /**
+     * setter for username
+     * @param username name of a user
+     */
     public void setUsername(String username) { this.username = username; }
 
+    /**
+     * getter for password
+     * @return password
+     */
     public String getPassword() { return password; }
+
+    /**
+     * setter for password
+     * @param password password
+     */
     public void setPassword(String password) { this.password = password; }
 
+    /**
+     * getter for User_type
+     * @return
+     */
     public User_type getType() {
         return type;
     }
 
+    /**
+     * setter for type
+     * @param type type of a user
+     */
     public void setType(User_type type) {
         this.type = type;
     }
 
+    /**
+     * @return returns user's email, username, password, and type
+     */
     @Override
     public String toString() {
         return email + " " + username + " " + password + " " + type;
     }
 
+    /**
+     * This method checks whether the parameter is same object with
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         User c = (User) o;

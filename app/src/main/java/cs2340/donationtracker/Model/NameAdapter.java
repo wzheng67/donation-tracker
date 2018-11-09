@@ -16,6 +16,9 @@ import android.widget.TextView;
 
 import cs2340.donationtracker.R;
 
+/**
+ * This class displays name of items based on data derived from database.
+ */
 public class NameAdapter extends ArrayAdapter<LocationData> {
     private Context context;
     private List list;
@@ -26,6 +29,12 @@ public class NameAdapter extends ArrayAdapter<LocationData> {
         public TextView location_phone;
     }
 
+    /**
+     * This method displays name of items
+     * @param context an object of Context class
+     * @param list an object of List class
+     * @param listView an object of ListView class
+     */
     public NameAdapter(Context context, List<LocationData> list, ListView listView) {
         super(context, 0, list);
         this.context = context;
@@ -33,6 +42,13 @@ public class NameAdapter extends ArrayAdapter<LocationData> {
         this.listView = listView;
     }
 
+    /**
+     * This method obtains position of item from item list.
+     * @param position an integer that indicates a certain item
+     * @param convertView an object of View class
+     * @param parent an object of ViewGroup
+     * @return View view of nameAdapter
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
