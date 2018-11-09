@@ -1,6 +1,6 @@
 package cs2340.donationtracker.Model;
 
-public class CurrentUser {
+public final class CurrentUser {
     private static final CurrentUser ourInstance = new CurrentUser();
 
     public static CurrentUser getInstance() {

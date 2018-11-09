@@ -3,13 +3,13 @@ package cs2340.donationtracker.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Model {
+public final class Model {
     /** Singleton instance */
     private static final Model _instance = new Model();
     public static Model getInstance() { return _instance; }
 
     /** holds the list of all courses */
-    private List<User> users;
+    private final List<User> users;
 
     private Model() {
         users = new ArrayList<>();
@@ -17,6 +17,7 @@ public class Model {
 
     public List<User> getUsers() { return users; }
 
+    @SuppressWarnings("ChainedMethodCall")
     public boolean addUser(User user) {
         for (User s : users) {
             if (s.getEmail().equals(user.getEmail())) {

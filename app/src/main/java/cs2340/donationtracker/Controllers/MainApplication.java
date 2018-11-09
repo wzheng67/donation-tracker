@@ -7,12 +7,9 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import cs2340.donationtracker.Model.User;
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("ChainedMethodCall")
 public class MainApplication extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

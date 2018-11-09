@@ -1,7 +1,7 @@
 package cs2340.donationtracker.Model;
 
-import cs2340.donationtracker.Controllers.Location;
 
+@SuppressWarnings("TypeMayBeWeakened")
 public class ItemInfo {
     private String timeStamp;
 

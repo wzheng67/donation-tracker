@@ -1,7 +1,5 @@
 package cs2340.donationtracker.Controllers;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,18 +14,9 @@ import android.widget.TextView;
 
 import cs2340.donationtracker.R;
 
-@SuppressWarnings("SpellCheckingInspection")
+
+@SuppressWarnings({"MagicNumber", "AssignmentToStaticFieldFromInstanceMethod", "SpellCheckingInspection", "RedundantCast"})
 public class Welcomescreen extends AppCompatActivity {
-
-    private Button login;
-    private Button register;
-    private ImageView imageView;
-    private TextView text;
-
-    private Animation frombottom1;
-    private Animation frombottom2;
-    private Animation fadeInIcon;
-    private Animation fadeInText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,30 +24,36 @@ public class Welcomescreen extends AppCompatActivity {
         Location.locationList = Location.getLocationData(this);
         setContentView(R.layout.activity_welcomescreen);
 
-        imageView = (ImageView) findViewById(R.id.imageView2);
-        text = (TextView) findViewById(R.id.editText3);
-        login = (Button) findViewById(R.id.Login);
-        register = (Button ) findViewById(R.id.Registration);
+        ImageView imageView = (ImageView) findViewById(R.id.imageView2);
+        TextView text = (TextView) findViewById(R.id.editText3);
+        Button login = (Button) findViewById(R.id.Login);
+        Button register = (Button) findViewById(R.id.Registration);
 
-        frombottom1 = AnimationUtils.loadAnimation(this, R.anim.from_bottom);
-        frombottom2 = AnimationUtils.loadAnimation(this, R.anim.from_bottom);
-        fadeInIcon =  AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
-        fadeInText =  AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
-        fadeInIcon.setStartOffset(500);
+        Animation frombottom1 = AnimationUtils.loadAnimation(this, R.anim.from_bottom);
+        Animation frombottom2 = AnimationUtils.loadAnimation(this, R.anim.from_bottom);
+        Animation fadeInIcon = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+        Animation fadeInText = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+        int offset = 500;
+        fadeInIcon.setStartOffset(offset);
         imageView.startAnimation(fadeInIcon);
 
-
-        ObjectAnimator animation = ObjectAnimator.ofFloat(imageView, "translationY", -350f);
-        animation.setDuration(1000);
-        animation.setStartDelay(1400);
+        float distance = -350f;
+        int duration = 1000;
+        int delay = 1400;
+        ObjectAnimator animation = ObjectAnimator.ofFloat(imageView, "translationY", distance);
+        animation.setDuration(duration);
+        animation.setStartDelay(delay);
         animation.start();
 
 
-        fadeInText.setStartOffset(2250);
+        int textDelay = 2250;
+        int loginDelay = 3000;
+        int registerDelay= 3100;
+        fadeInText.setStartOffset(textDelay);
         text.startAnimation(fadeInText);
-        frombottom1.setStartOffset(3000);
+        frombottom1.setStartOffset(loginDelay);
         login.setAnimation(frombottom1);
-        frombottom2.setStartOffset((3100));
+        frombottom2.setStartOffset(registerDelay);
         register.setAnimation(frombottom2);
 
     }

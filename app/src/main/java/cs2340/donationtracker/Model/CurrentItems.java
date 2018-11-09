@@ -3,7 +3,7 @@ package cs2340.donationtracker.Model;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CurrentItems {
+public final class CurrentItems {
     private static final CurrentItems ourInstance = new CurrentItems();
 
     public static CurrentItems getInstance() {

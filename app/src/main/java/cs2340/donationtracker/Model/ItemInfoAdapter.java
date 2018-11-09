@@ -1,12 +1,9 @@
 package cs2340.donationtracker.Model;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.StrictMode;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -17,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,16 +29,16 @@ import java.util.List;
 
 import cs2340.donationtracker.R;
 
-@SuppressWarnings("SpellCheckingInspection")
+
+@SuppressWarnings({"SpellCheckingInspection", "RedundantCast", "FeatureEnvy", "MagicNumber", "ChainedMethodCall"})
 public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
 
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageReference = storage.getReferenceFromUrl("gs://donation-tracker-56b.appspot.com").child("images");
     StorageReference pathReference;
 
-    private Context context;
-    private List<ItemInfo> list;
-    private ListView listView;
+    private final Context context;
+    private final List<ItemInfo> list;
 
     class ItemViewHolder {
         public TextView Item_shortDescription;
@@ -57,7 +53,7 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
         super(context, 0, list);
         this.context = context;
         this.list = list;
-        this.listView = listView;
+        ListView listView1 = listView;
 
     }
     @NonNull
@@ -93,10 +89,12 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
         ViewHolder.Item_shortDescription.setText(itemInfo.getShortDescription());
         ViewHolder.Item_category.setText(itemInfo.getCategory().toString());
         ViewHolder.Item_value.setText("" + itemInfo.getValue());
-        ViewHolder.Item_timeStamp.setText(itemInfo.getTimeStamp().substring(0,16));
+        int subStringStart = 0;
+        int subStringEnd = 16;
+        ViewHolder.Item_timeStamp.setText(itemInfo.getTimeStamp().substring(subStringStart, subStringEnd));
         ViewHolder.Item_fullDescription.setText(itemInfo.getFullDescription());
         ViewHolder.Item_comments.setText(itemInfo.getComments());
-        if (!itemInfo.getImageName().equals("")) {
+        if (!"".equals(itemInfo.getImageName())) {
             pathReference = storageReference.child(itemInfo.getImageName());
             pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
@@ -124,7 +122,8 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
             URLConnection conn = new URL(url).openConnection();
             conn.connect();
             is = conn.getInputStream();
-            bis = new BufferedInputStream(is, 8192);
+            int bufferSize = 8192;
+            bis = new BufferedInputStream(is, bufferSize);
             bm = BitmapFactory.decodeStream(bis);
         }
         catch (Exception e) {

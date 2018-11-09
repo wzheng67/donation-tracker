@@ -31,7 +31,7 @@ import android.widget.Toast;
 
 import cs2340.donationtracker.R;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"SpellCheckingInspection", "ForLoopReplaceableByForEach", "RedundantCast", "ChainedMethodCall"})
 public class CameraCropActivity extends AppCompatActivity
 {
     private static final int MY_PERMISSION_CAMERA = 1111;
@@ -39,13 +39,15 @@ public class CameraCropActivity extends AppCompatActivity
     private static final int REQUEST_TAKE_ALBUM = 3333;
     private static final int REQUEST_IMAGE_CROP = 4444;
 
-    Button btn_capture, btn_album;
+    Button btn_capture;
+    Button btn_album;
     ImageView iv_view;
 
     String mCurrentPhotoPath;
 
     Uri imageUri;
-    Uri photoURI, albumURI;
+    Uri photoURI;
+    Uri albumURI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +98,6 @@ public class CameraCropActivity extends AppCompatActivity
             }
         } else {
             Toast.makeText(this, "Cannot access to the storage of this device.", Toast.LENGTH_SHORT).show();
-            return;
         }
     }
 
