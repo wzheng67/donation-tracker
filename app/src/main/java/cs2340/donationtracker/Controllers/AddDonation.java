@@ -38,6 +38,9 @@ import cs2340.donationtracker.Model.ItemInfo;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+/**
+ * implementation of add donation function
+ */
 public class AddDonation extends AppCompatActivity {
 
     private final List<Category> categoryList = Arrays.asList(Category.values());
@@ -148,14 +151,23 @@ public class AddDonation extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method takes user to CameraCropActivity class where user can crop their picture.
+     */
     public void goToCameraCrop() {
         Intent intent = new Intent(this, CameraCropActivity.class);
         startActivityForResult(intent, 1);
     }
-    public void goToNextView() {
+
+    private void goToNextView() {
         Intent intent = new Intent(this, MainApplication.class);
         startActivity(intent);
     }
+
+    /**
+     * This This method takes users to MainApplication display.
+     * @param v an object class of View class
+     */
     public void cancel(View v) {
         Intent intent = new Intent(this, MainApplication.class);
         startActivity(intent);

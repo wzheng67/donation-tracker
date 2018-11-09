@@ -19,6 +19,9 @@ import cs2340.donationtracker.Model.LocationAdapter;
 import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.R;
 
+/**
+ * implementation of location display
+ */
 public class Location_display extends AppCompatActivity {
 
     @Override
@@ -44,6 +47,9 @@ public class Location_display extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method takes users to a previous page.
+     */
     public void goBack() {
         Intent intent = new Intent(this, Location.class);
         startActivity(intent);
