@@ -166,7 +166,6 @@ public class CameraCropActivity extends AppCompatActivity
                         intent.putExtra("albumURI", imageUri);
                         setResult(RESULT_OK, intent);
                         finish();
-                        iv_view.setImageURI(imageUri);
                     } catch (Exception e) {
                         Log.e("REQUEST_TAKE_PHOTO", e.toString());
                     }
@@ -200,7 +199,6 @@ public class CameraCropActivity extends AppCompatActivity
                     intent.putExtra("albumURI", albumURI);
                     setResult(RESULT_OK, intent);
                     finish();
-                    iv_view.setImageURI(albumURI);
                 }
                 break;
         }
