@@ -33,6 +33,7 @@ import java.util.List;
 
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
 
     FirebaseStorage storage = FirebaseStorage.getInstance();

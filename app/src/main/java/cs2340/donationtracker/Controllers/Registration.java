@@ -39,6 +39,7 @@ import cs2340.donationtracker.Model.User;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class Registration extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 10;
@@ -52,7 +53,7 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        initTypeSprinner();
+        initTypeSpinner();
         initGoogleSignInButton();
 
 
@@ -68,7 +69,7 @@ public class Registration extends AppCompatActivity {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
+                fireBaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Toast.makeText(Registration.this, "Google sign-in failed, try it again", Toast.LENGTH_SHORT).show();
@@ -81,7 +82,7 @@ public class Registration extends AppCompatActivity {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+    private void fireBaseAuthWithGoogle(GoogleSignInAccount acct) {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -161,7 +162,7 @@ public class Registration extends AppCompatActivity {
             }
         });
     }
-    private void initTypeSprinner() {
+    private void initTypeSpinner() {
         locationSpinner = findViewById(R.id.regist_location);
         textView = findViewById(R.id.manage);
         imageView = findViewById(R.id.map);

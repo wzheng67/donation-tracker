@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class CameraCropActivity extends AppCompatActivity
 {
     private static final int MY_PERMISSION_CAMERA = 1111;

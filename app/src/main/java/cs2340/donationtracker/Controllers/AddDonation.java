@@ -38,6 +38,7 @@ import cs2340.donationtracker.Model.ItemInfo;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class AddDonation extends AppCompatActivity {
 
     private final List<Category> categoryList = Arrays.asList(Category.values());
@@ -133,13 +134,10 @@ public class AddDonation extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Uploading failed.", Toast.LENGTH_SHORT).show();
                         }
                     })
-                    //진행중
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            @SuppressWarnings("VisibleForTests")
-                                    double progress = (100 * taskSnapshot.getBytesTransferred()) /  taskSnapshot.getTotalByteCount();
-                            //dialog에 진행률을 퍼센트로 출력해 준다
+                            double progress = (100 * taskSnapshot.getBytesTransferred()) /  taskSnapshot.getTotalByteCount();
                             progressDialog.setMessage("Uploaded " + ((int) progress) + "% ...");
                         }
                     });
@@ -209,9 +207,9 @@ public class AddDonation extends AppCompatActivity {
             locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             locationSpinner.setAdapter(locationAdapter);
         }
-        ArrayAdapter categroryAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, categoryList);
-        categroryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categorySpinner.setAdapter(categroryAdapter);
+        ArrayAdapter categoryAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, categoryList);
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(categoryAdapter);
     }
     private void getTexts() {
         shortDes = (EditText) findViewById(R.id.sDescriptionText_value);

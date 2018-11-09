@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class Welcomescreen extends AppCompatActivity {
 
     private Button login;
@@ -60,53 +61,6 @@ public class Welcomescreen extends AppCompatActivity {
         frombottom2.setStartOffset((3100));
         register.setAnimation(frombottom2);
 
-
-
-
-
-//                imageViewsetAnimationListener(new Animation.AnimationListener() {
-//            @Override
-//            public void onAnimationStart(Animation animation) {
-//
-//            }
-//
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//                finish();
-//                startActivity(new Intent(getApplicationContext(), Welcomescreen.class));
-//            }
-//
-//            @Override
-//            public void onAnimationRepeat(Animation animation) {
-//
-//            }
-//        });
-
-//        final Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
-//        imageView.setAnimation(startAnimation);
-
-//        startAnimation.setAnimationListener(new Animation.AnimationListener() {
-//            @Override
-//            public void onAnimationStart(Animation animation) {
-//
-//            }
-//
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//                finish();
-//                startActivity(new Intent(getApplicationContext(), Welcomescreen.class));
-//            }
-//
-//            @Override
-//            public void onAnimationRepeat(Animation animation) {
-//
-//            }
-//        });
-//
-//    }
-//
-////    public void startFadeInAnimation(View view) {
-////
     }
     public void goToLogin(View v) {
         Intent intent = new Intent(this, Login.class);

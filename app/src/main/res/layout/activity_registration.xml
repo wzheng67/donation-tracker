@@ -47,13 +47,13 @@
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
-        android:id="@+id/RegistationView"
+        android:id="@+id/RegistrationView"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
-        android:text="Registation"
+        android:text="Registration"
         android:textAlignment="center"
         android:textColor="@color/colorForLogin"
         android:textSize="30sp"
@@ -99,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegistationView" />
+        app:layout_constraintTop_toBottomOf="@+id/RegistrationView" />
 
     <Spinner
         android:id="@+id/regist_location"

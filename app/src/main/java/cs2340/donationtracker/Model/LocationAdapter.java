@@ -26,7 +26,7 @@ public class LocationAdapter extends ArrayAdapter<LocationData> {
         public TextView location_name;
         public TextView location_Type;
         public TextView location_Longitude;
-        public TextView location_Latiude;
+        public TextView location_Latitude;
         public TextView location_address;
         public TextView location_phone;
     }
@@ -53,7 +53,7 @@ public class LocationAdapter extends ArrayAdapter<LocationData> {
             viewHolder.location_name = (TextView) rowView.findViewById(R.id.textView_name_value);
             viewHolder.location_Type = (TextView) rowView.findViewById(R.id.textView_type_value);
             viewHolder.location_Longitude = (TextView) rowView.findViewById(R.id.textView_longitude_value);
-            viewHolder.location_Latiude = (TextView) rowView.findViewById(R.id.textView_latitude_value);
+            viewHolder.location_Latitude = (TextView) rowView.findViewById(R.id.textView_latitude_value);
             viewHolder.location_address = (TextView) rowView.findViewById(R.id.textView_address_value);
             viewHolder.location_phone = (TextView) rowView.findViewById(R.id.textView_phone_value);
 
@@ -73,7 +73,7 @@ public class LocationAdapter extends ArrayAdapter<LocationData> {
         viewHolder.location_name.setText(locationData.getLocation_name());
         viewHolder.location_Type.setText(locationData.getLocation_type());
         viewHolder.location_Longitude.setText(locationData.getLongitude());
-        viewHolder.location_Latiude.setText(locationData.getLatitude());
+        viewHolder.location_Latitude.setText(locationData.getLatitude());
         viewHolder.location_address.setText(locationData.getAddress());
         viewHolder.location_phone.setText(locationData.getPhone_number());
         Log.d("@@@", "row view is " + Status + ", tag = " + tag);

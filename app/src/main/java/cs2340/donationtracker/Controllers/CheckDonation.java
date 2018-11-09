@@ -144,33 +144,33 @@ public class CheckDonation extends AppCompatActivity {
         });
     }
     private void display() {
-        ListView itemListview = (ListView) findViewById(R.id.listview_location);
+        ListView itemListView = (ListView) findViewById(R.id.listview_location);
         List<ItemInfo> tempList = new LinkedList<>();
 
         for (ItemInfo i : CurrentItems.getInstance().getItemList()) {
             System.out.println(i.getLocationData());
             if (currentCategory.equals(ALL_Categories)
-                    && isVaildKeyword(i.getShortDescription())
+                    && isValidKeyword(i.getShortDescription())
                     && currentLocation.equals(ALL_LOCATIONS)) {
                 tempList.add(i);
             } else if (currentCategory.equals(ALL_Categories)
-                    && isVaildKeyword(i.getShortDescription())
+                    && isValidKeyword(i.getShortDescription())
                     && i.getLocationData().getLocation_name().equals(currentLocation)) {
                 tempList.add(i);
             } else if (i.getCategory().toString().equals(currentCategory)
-                    && isVaildKeyword(i.getShortDescription())
+                    && isValidKeyword(i.getShortDescription())
                     && currentLocation.equals(ALL_LOCATIONS)) {
                 tempList.add(i);
             } else if (i.getCategory().toString().equals(currentCategory)
-                    && isVaildKeyword(i.getShortDescription())
+                    && isValidKeyword(i.getShortDescription())
                     && i.getLocationData().getLocation_name().equals(currentLocation)) {
                 tempList.add(i);
             }
         }
-        ItemInfoAdapter itemInfoAdapter = new ItemInfoAdapter(this, tempList, itemListview);
-        itemListview.setAdapter(itemInfoAdapter);
+        ItemInfoAdapter itemInfoAdapter = new ItemInfoAdapter(this, tempList, itemListView);
+        itemListView.setAdapter(itemInfoAdapter);
     }
-    private boolean isVaildKeyword(String i) {
+    private boolean isValidKeyword(String i) {
         if (!searchKeyword.isEmpty()) {
             String a = searchKeyword.toLowerCase();
             String b;

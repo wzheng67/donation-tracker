@@ -50,11 +50,11 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/Categrory"
+                        android:id="@+id/Category"
                         android:layout_width="87dp"
                         android:layout_height="27dp"
                         android:layout_weight="1"
-                        android:text="Categrory :"
+                        android:text="Category :"
                         android:textSize="18sp" />
 
                     <TextView
