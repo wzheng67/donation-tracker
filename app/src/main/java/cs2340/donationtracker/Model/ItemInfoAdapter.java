@@ -30,16 +30,15 @@ import java.util.List;
 import cs2340.donationtracker.R;
 
 
-@SuppressWarnings({"SpellCheckingInspection", "RedundantCast"})
+@SuppressWarnings({"SpellCheckingInspection", "RedundantCast", "FeatureEnvy", "MagicNumber", "ChainedMethodCall"})
 public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
 
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageReference = storage.getReferenceFromUrl("gs://donation-tracker-56b.appspot.com").child("images");
     StorageReference pathReference;
 
-    private Context context;
-    private List<ItemInfo> list;
-    private ListView listView;
+    private final Context context;
+    private final List<ItemInfo> list;
 
     class ItemViewHolder {
         public TextView Item_shortDescription;
@@ -54,7 +53,7 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
         super(context, 0, list);
         this.context = context;
         this.list = list;
-        this.listView = listView;
+        ListView listView1 = listView;
 
     }
     @NonNull
@@ -95,7 +94,7 @@ public class ItemInfoAdapter extends ArrayAdapter<ItemInfo> {
         ViewHolder.Item_timeStamp.setText(itemInfo.getTimeStamp().substring(subStringStart, subStringEnd));
         ViewHolder.Item_fullDescription.setText(itemInfo.getFullDescription());
         ViewHolder.Item_comments.setText(itemInfo.getComments());
-        if (!itemInfo.getImageName().equals("")) {
+        if (!"".equals(itemInfo.getImageName())) {
             pathReference = storageReference.child(itemInfo.getImageName());
             pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override

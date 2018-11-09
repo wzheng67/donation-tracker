@@ -15,11 +15,10 @@ import android.widget.TextView;
 import cs2340.donationtracker.R;
 
 
-@SuppressWarnings("RedundantCast")
+@SuppressWarnings({"RedundantCast", "FeatureEnvy", "ChainedMethodCall"})
 public class LocationAdapter extends ArrayAdapter<LocationData> {
-    private Context context;
-    private List list;
-    private ListView listView;
+    private final Context context;
+    private final List list;
 
     class LocationViewHolder {
         public TextView location_key;
@@ -35,7 +34,7 @@ public class LocationAdapter extends ArrayAdapter<LocationData> {
         super(context, 0, list);
         this.context = context;
         this.list = list;
-        this.listView = listView;
+        ListView listView1 = listView;
     }
 
     @NonNull

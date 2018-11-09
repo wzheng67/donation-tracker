@@ -38,16 +38,15 @@ import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
 
-@SuppressWarnings({"SpellCheckingInspection", "IfCanBeSwitch", "RedundantCast"})
+@SuppressWarnings({"SpellCheckingInspection", "IfCanBeSwitch", "RedundantCast", "TypeMayBeWeakened", "ChainedMethodCall"})
 public class Registration extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 10;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
     private Spinner locationSpinner;
-    private TextView textView;
     private ImageView imageView;
-    private String TAG = "Reg";
+    private final String TAG = "Reg";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -165,12 +164,12 @@ public class Registration extends AppCompatActivity {
     @SuppressWarnings("FeatureEnvy")
     private void initTypeSpinner() {
         locationSpinner = findViewById(R.id.regist_location);
-        textView = findViewById(R.id.manage);
+        TextView textView = findViewById(R.id.manage);
         imageView = findViewById(R.id.map);
 
         Spinner s = findViewById(R.id.type);
-        final ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User_type.values());
-        final ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, Location.locationList);
+        final ArrayAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, User_type.values());
+        final ArrayAdapter adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Location.locationList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
         final User_type[] userTypes = User_type.values();
