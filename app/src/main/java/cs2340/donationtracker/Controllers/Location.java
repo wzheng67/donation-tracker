@@ -22,6 +22,7 @@ import cs2340.donationtracker.Model.NameAdapter;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+@SuppressWarnings({"TryWithIdenticalCatches", "RedundantCast"})
 public class Location extends AppCompatActivity {
     public static List<LocationData> locationList = new ArrayList<>();
     public ListView listview;

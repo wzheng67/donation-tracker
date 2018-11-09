@@ -31,15 +31,13 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.lang.reflect.Array;
-
 import cs2340.donationtracker.Model.CurrentUser;
 import cs2340.donationtracker.Model.Sha256;
 import cs2340.donationtracker.Model.User;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"SpellCheckingInspection", "IfCanBeSwitch", "RedundantCast"})
 public class Registration extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 10;

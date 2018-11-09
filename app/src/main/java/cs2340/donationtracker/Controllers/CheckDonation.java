@@ -32,6 +32,7 @@ import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("RedundantCast")
 public class CheckDonation extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private List<String> searchList;

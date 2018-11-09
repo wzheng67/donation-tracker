@@ -38,7 +38,7 @@ import cs2340.donationtracker.Model.ItemInfo;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"SpellCheckingInspection", "RedundantCast"})
 public class AddDonation extends AppCompatActivity {
 
     private final List<Category> categoryList = Arrays.asList(Category.values());

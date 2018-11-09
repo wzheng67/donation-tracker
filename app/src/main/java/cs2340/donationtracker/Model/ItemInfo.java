@@ -1,7 +1,5 @@
 package cs2340.donationtracker.Model;
 
-import cs2340.donationtracker.Controllers.Location;
-
 public class ItemInfo {
     private String timeStamp;
 
