@@ -1,7 +1,5 @@
 package cs2340.donationtracker.Controllers;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +14,8 @@ import android.widget.TextView;
 
 import cs2340.donationtracker.R;
 
-@SuppressWarnings({"SpellCheckingInspection", "MagicNumber", "AssignmentToStaticFieldFromInstanceMethod"})
+
+@SuppressWarnings({"MagicNumber", "AssignmentToStaticFieldFromInstanceMethod", "SpellCheckingInspection", "RedundantCast"})
 public class Welcomescreen extends AppCompatActivity {
 
     @Override

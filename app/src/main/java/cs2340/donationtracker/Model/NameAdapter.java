@@ -1,10 +1,8 @@
 package cs2340.donationtracker.Model;
 
 import android.content.Context;
-import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,8 @@ import android.widget.TextView;
 
 import cs2340.donationtracker.R;
 
-@SuppressWarnings("ChainedMethodCall")
+
+@SuppressWarnings({"ChainedMethodCall", "RedundantCast"})
 public class NameAdapter extends ArrayAdapter<LocationData> {
     private final Context context;
     private final List list;

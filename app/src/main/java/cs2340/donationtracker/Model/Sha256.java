@@ -5,7 +5,7 @@ package cs2340.donationtracker.Model;
 
 import java.security.MessageDigest;
 
-@SuppressWarnings({"MagicNumber", "UtilityClass", "ChainedMethodCall"})
+@SuppressWarnings({"MagicNumber", "UtilityClass", "ChainedMethodCall", "ForLoopReplaceableByForEach", "StringBufferMayBeStringBuilder"})
 public class Sha256 {   // this class encrypt a String with the system SHA256.
     public static String encrypt(String planText) {
         try{

@@ -32,7 +32,8 @@ import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
-@SuppressWarnings("ChainedMethodCall")
+
+@SuppressWarnings({"ChainedMethodCall", "RedundantCast"})
 public class CheckDonation extends AppCompatActivity {
     private List<String> searchList;
     private List<String> locationList;
