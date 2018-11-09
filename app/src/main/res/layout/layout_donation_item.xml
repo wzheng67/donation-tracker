@@ -62,7 +62,7 @@
                         android:layout_width="320dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="@String category"
+                        android:text=""
                         android:textSize="18sp" />
                 </TableRow>
 
@@ -83,7 +83,7 @@
                         android:layout_width="320dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="@ String $"
+                        android:text=""
                         android:textSize="18sp" />
 
                 </TableRow>
@@ -105,7 +105,7 @@
                         android:layout_width="320dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="@String time"
+                        android:text=""
                         android:textSize="18sp" />
 
                 </TableRow>
@@ -164,7 +164,7 @@
                 android:layout_width="103dp"
                 android:layout_height="27dp"
                 android:layout_weight="1"
-                android:text="@String context"
+                android:text=""
                 android:textSize="18sp" />
 
         </TableRow>

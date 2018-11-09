@@ -60,12 +60,6 @@ public class AddDonation extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
 
-    private static final int MY_PERMISSION_CAMERA = 1111;
-    private static final int REQUEST_TAKE_PHOTO = 2222;
-    private static final int REQUEST_TAKE_ALBUM = 3333;
-    private static final int REQUEST_IMAGE_CROP = 4444;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
