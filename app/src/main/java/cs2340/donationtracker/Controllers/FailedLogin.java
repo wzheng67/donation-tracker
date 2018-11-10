@@ -7,6 +7,7 @@ import android.view.View;
 
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("CyclicClassDependency")
 public class FailedLogin extends AppCompatActivity {
 
     @Override
@@ -15,6 +16,7 @@ public class FailedLogin extends AppCompatActivity {
         setContentView(R.layout.activity_failed_login);
     }
 
+    @SuppressWarnings("unused")
     public void goBackToLogin(View v) {
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);

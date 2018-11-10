@@ -3,18 +3,12 @@ package cs2340.donationtracker.Controllers;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
-import cs2340.donationtracker.Model.CurrentItems;
-import cs2340.donationtracker.Model.ItemInfo;
-import cs2340.donationtracker.Model.ItemInfoAdapter;
 import cs2340.donationtracker.Model.LocationAdapter;
 import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.R;
@@ -22,6 +16,7 @@ import cs2340.donationtracker.R;
 /**
  * implementation of location display
  */
+@SuppressWarnings({"ALL", "CyclicClassDependency"})
 public class Location_display extends AppCompatActivity {
 
     @Override
@@ -31,14 +26,14 @@ public class Location_display extends AppCompatActivity {
 
         Intent intent = getIntent();
         int position = intent.getIntExtra("Item_position", 0);
-        ListView listview = (ListView) findViewById(R.id.location_display);
+        ListView listview = findViewById(R.id.location_display);
 
         LinkedList<LocationData> list = new LinkedList<>();
         list.add(Location.locationList.get(position));
         LocationAdapter locationAdapter = new LocationAdapter(this, list, listview);
         listview.setAdapter(locationAdapter);
 
-        Button back = (Button) findViewById(R.id.button_Ldisplay_Back);
+        Button back = findViewById(R.id.button_location_display_Back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +45,7 @@ public class Location_display extends AppCompatActivity {
     /**
      * This method takes users to a previous page.
      */
-    public void goBack() {
+    private void goBack() {
         Intent intent = new Intent(this, Location.class);
         startActivity(intent);
     }

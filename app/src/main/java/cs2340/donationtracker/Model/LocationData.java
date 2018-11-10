@@ -3,6 +3,7 @@ package cs2340.donationtracker.Model;
 /**
  * implementation of location of items
  */
+@SuppressWarnings({"ALL", "unused"})
 public class LocationData {
     private String Key;
     private String Location_name;
@@ -50,6 +51,7 @@ public class LocationData {
      * setter for Key
      * @param key key
      */
+    @SuppressWarnings("unused")
     public void setKey(String key) {
         Key = key;
     }

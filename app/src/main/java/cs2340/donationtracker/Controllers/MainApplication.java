@@ -6,16 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.LinkedList;
-import java.util.List;
-
-import cs2340.donationtracker.Model.User;
 import cs2340.donationtracker.R;
 
 /**
  * This MainApplication implements goLocation, goDonation, logout method.
  */
+@SuppressWarnings("CyclicClassDependency")
 public class MainApplication extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +23,7 @@ public class MainApplication extends AppCompatActivity {
      * This method changes current view to location display.
      * @param v an object of view class
      */
+    @SuppressWarnings("unused")
     public void goLocation(View v) {
         Intent intent = new Intent(this, Location.class);
         startActivity(intent);
@@ -36,6 +33,7 @@ public class MainApplication extends AppCompatActivity {
      * This method changes current view to AddDonation display.
      * @param v an object of view class
      */
+    @SuppressWarnings("unused")
     public void goDonation(View v) {
         Intent intent = new Intent(this, AddDonation.class);
         startActivity(intent);
@@ -45,6 +43,7 @@ public class MainApplication extends AppCompatActivity {
      * This method changes current view to MapLocation.
      * @param v an object of view class
      */
+    @SuppressWarnings("unused")
     public void goMap(View v) {
         Intent intent = new Intent(this, MapLocation.class);
         startActivity(intent);
@@ -54,6 +53,7 @@ public class MainApplication extends AppCompatActivity {
      * This method changes current view to CheckDonation.
      * @param v an object of view class
      */
+    @SuppressWarnings("unused")
     public void goCheckDonation(View v) {
         Intent intent = new Intent(this, CheckDonation.class);
         startActivity(intent);
@@ -63,8 +63,9 @@ public class MainApplication extends AppCompatActivity {
      * This method takes user to welcome screen.
      * @param v an object of view class
      */
+    @SuppressWarnings({"unused", "ChainedMethodCall"})
     public void logout(View v) {
-        Intent intent = new Intent(this, Welcomescreen.class);
+        Intent intent = new Intent(this, WelcomeScreen.class);
         FirebaseAuth.getInstance().signOut();
         startActivity(intent);
     }

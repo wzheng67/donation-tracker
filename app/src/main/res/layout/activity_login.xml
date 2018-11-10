@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress LongLine -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Controllers.Login">
+    tools:context=".Controllers.Login"
+    tools:ignore="Overdraw">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -41,7 +43,8 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,RtlHardcoded,TextFields" />
 
     <EditText
         android:id="@+id/password"
@@ -61,7 +64,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <Button
         android:id="@+id/loginAttempt"

@@ -1,6 +1,7 @@
 package cs2340.donationtracker.Controllers;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -26,11 +27,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("ALL")
 public class CameraCropActivity extends AppCompatActivity
 {
     private static final int MY_PERMISSION_CAMERA = 1111;
@@ -38,13 +39,12 @@ public class CameraCropActivity extends AppCompatActivity
     private static final int REQUEST_TAKE_ALBUM = 3333;
     private static final int REQUEST_IMAGE_CROP = 4444;
 
-    Button btn_capture, btn_album;
-    ImageView iv_view;
+    private Button btn_capture, btn_album;
 
-    String mCurrentPhotoPath;
+    private String mCurrentPhotoPath;
 
-    Uri imageUri;
-    Uri photoURI, albumURI;
+    private Uri imageUri;
+    private Uri photoURI, albumURI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +52,8 @@ public class CameraCropActivity extends AppCompatActivity
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_camera_crop);
 
-        btn_capture = (Button) findViewById(R.id.btn_capture);
-        btn_album = (Button) findViewById(R.id.btn_album);
+        btn_capture = findViewById(R.id.btn_capture);
+        btn_album = findViewById(R.id.btn_album);
 
         btn_capture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +72,7 @@ public class CameraCropActivity extends AppCompatActivity
         checkPermission();
     }
 
+    @SuppressWarnings({"UnnecessaryReturnStatement", "SpellCheckingInspection"})
     private void captureCamera(){
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -99,9 +100,10 @@ public class CameraCropActivity extends AppCompatActivity
         }
     }
 
-    public File createImageFile() throws IOException {
+    @SuppressWarnings({"ResultOfMethodCallIgnored", "RedundantThrows", "SpellCheckingInspection"})
+    private File createImageFile() throws IOException {
         // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + ".jpg";
         File imageFile = null;
         File storageDir = new File(Environment.getExternalStorageDirectory(), "/Pictures/");
@@ -136,7 +138,7 @@ public class CameraCropActivity extends AppCompatActivity
         Toast.makeText(this, "The photo is saved in the gallery.", Toast.LENGTH_SHORT).show();
     }
 
-    public void cropImage(){
+    private void cropImage(){
         Log.i("cropImage", "Call");
         Log.i("cropImage", "photoURI : " + photoURI + " / albumURI : " + albumURI);
 
@@ -154,6 +156,7 @@ public class CameraCropActivity extends AppCompatActivity
         startActivityForResult(cropIntent, REQUEST_IMAGE_CROP);
     }
 
+    @SuppressWarnings("OverlyLongMethod")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -204,6 +207,7 @@ public class CameraCropActivity extends AppCompatActivity
         }
     }
 
+    @SuppressWarnings("ChainedMethodCall")
     private void checkPermission(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if ((ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) ||

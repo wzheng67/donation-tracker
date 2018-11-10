@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * Implementation of list of current items.
  */
+@SuppressWarnings("ALL")
 public class CurrentItems {
     private static final CurrentItems ourInstance = new CurrentItems();
 
@@ -34,6 +35,7 @@ public class CurrentItems {
     /**
      * erases all items in an item list
      */
+    @SuppressWarnings("unused")
     public void clear() {
         itemList = new LinkedList<>();
     }

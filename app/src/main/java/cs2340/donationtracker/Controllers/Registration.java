@@ -31,22 +31,23 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.lang.reflect.Array;
-
 import cs2340.donationtracker.Model.CurrentUser;
 import cs2340.donationtracker.Model.Sha256;
 import cs2340.donationtracker.Model.User;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("ALL")
 public class Registration extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 10;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
     private Spinner locationSpinner;
+    @SuppressWarnings("unused")
     private TextView textView;
     private ImageView imageView;
+    @SuppressWarnings("unused")
     private String TAG = "Reg";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class Registration extends AppCompatActivity {
 
 
     }
+    @SuppressWarnings("SpellCheckingInspection")
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -81,6 +83,7 @@ public class Registration extends AppCompatActivity {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+    @SuppressWarnings("SpellCheckingInspection")
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
@@ -98,22 +101,26 @@ public class Registration extends AppCompatActivity {
                     }
                 });
     }
+    @SuppressWarnings({"unused", "SpellCheckingInspection", "LawOfDemeter"})
     public void onAddUser(View v) {
         Log.d("smt", "got here");
         EditText email = findViewById(R.id.email);
         EditText user = findViewById(R.id.name);
         EditText pass = findViewById(R.id.password);
-        Spinner type = findViewById(R.id.type);
+        @SuppressWarnings("unused") Spinner type = findViewById(R.id.type);
         signUpUser(email.getText().toString(), pass.getText().toString(), user.getText().toString(), CurrentUser.getInstance().getUserType());
         Log.d("smtg", "got else");
     }
 
+    @SuppressWarnings("FeatureEnvy")
     private void signUpUser(String email, String password, String username, final User_type user_type) {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
         final User userModel = new User("", Sha256.encrypt(password), username, user_type);
+        //noinspection FeatureEnvy
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @SuppressWarnings("LawOfDemeter")
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
@@ -121,6 +128,7 @@ public class Registration extends AppCompatActivity {
                             FirebaseUser user = task.getResult().getUser();
                             userModel.setEmail(user.getEmail());
                             databaseReference.child("account").child(user.getUid()).setValue(userModel);
+                            //noinspection LawOfDemeter
                             CurrentUser.getInstance().setUserType(user_type);
                             CurrentUser.getInstance().setCurrUser(userModel);
                             if (CurrentUser.getInstance().getUserType() == User_type.USER) {
@@ -153,7 +161,7 @@ public class Registration extends AppCompatActivity {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        SignInButton button = (SignInButton) findViewById(R.id.button_google);
+        SignInButton button = findViewById(R.id.button_google);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,8 +169,9 @@ public class Registration extends AppCompatActivity {
             }
         });
     }
+    @SuppressWarnings({"SpellCheckingInspection", "FeatureEnvy", "TypeMayBeWeakened"})
     private void initTypeSprinner() {
-        locationSpinner = findViewById(R.id.regist_location);
+        locationSpinner = findViewById(R.id.register_location);
         textView = findViewById(R.id.manage);
         imageView = findViewById(R.id.map);
 
@@ -172,7 +181,9 @@ public class Registration extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
         final User_type[] userTypes = User_type.values();
+        //noinspection FeatureEnvy
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @SuppressWarnings({"IfCanBeSwitch", "LawOfDemeter"})
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (userTypes[position] == User_type.ADMIN) {
@@ -189,11 +200,13 @@ public class Registration extends AppCompatActivity {
                     imageView.setVisibility(View.VISIBLE);
                     locationSpinner.setAdapter(adapter2);
                     locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @SuppressWarnings("LawOfDemeter")
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             CurrentUser.getInstance().setLocationData(Location.locationList.get(position));
                         }
 
+                        @SuppressWarnings("LawOfDemeter")
                         @Override
                         public void onNothingSelected(AdapterView<?> parent) {
                             CurrentUser.getInstance().setLocationData(Location.locationList.get(0));
@@ -206,6 +219,7 @@ public class Registration extends AppCompatActivity {
                 }
             }
 
+            @SuppressWarnings("LawOfDemeter")
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 CurrentUser.getInstance().setUserType(User_type.USER);
@@ -224,8 +238,9 @@ public class Registration extends AppCompatActivity {
         Intent intent = new Intent(this, Registration_admin.class);
         startActivity(intent);
     }
+    @SuppressWarnings("unused")
     public void cancel(View v) {
-        Intent intent = new Intent(this, Welcomescreen.class);
+        Intent intent = new Intent(this, WelcomeScreen.class);
         startActivity(intent);
     }
 }

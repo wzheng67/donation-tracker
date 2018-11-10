@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -18,7 +20,8 @@
                 android:id="@+id/imageView"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                app:srcCompat="@android:drawable/ic_menu_camera" />
+                app:srcCompat="@android:drawable/ic_menu_camera"
+                tools:ignore="ContentDescription" />
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -34,7 +37,8 @@
                         android:layout_height="27dp"
                         android:layout_weight="1"
                         android:text="Item :"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
                         android:id="@+id/shortDescriptionView_value"
@@ -50,12 +54,13 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/Categrory"
+                        android:id="@+id/Category"
                         android:layout_width="87dp"
                         android:layout_height="27dp"
                         android:layout_weight="1"
-                        android:text="Categrory :"
-                        android:textSize="18sp" />
+                        android:text="Category :"
+                        android:textSize="18sp"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
                         android:id="@+id/categoryView_value"
@@ -76,7 +81,8 @@
                         android:layout_height="27dp"
                         android:layout_weight="1"
                         android:text="Value ($) :"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
                         android:id="@+id/valueView_value"
@@ -98,7 +104,8 @@
                         android:layout_height="27dp"
                         android:layout_weight="1"
                         android:text="Time :"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
                         android:id="@+id/timeStampView_value"
@@ -124,7 +131,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=" Full Description :"
-                android:textSize="23sp" />
+                android:textSize="23sp"
+                tools:ignore="HardcodedText" />
 
         </TableRow>
 
@@ -151,7 +159,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text=" Comments"
-                android:textSize="23sp" />
+                android:textSize="23sp"
+                tools:ignore="HardcodedText" />
 
         </TableRow>
 

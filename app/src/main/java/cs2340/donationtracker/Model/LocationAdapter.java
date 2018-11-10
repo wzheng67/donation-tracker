@@ -1,10 +1,8 @@
 package cs2340.donationtracker.Model;
 
 import android.content.Context;
-import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,16 +18,15 @@ import cs2340.donationtracker.R;
  * This class displays location list view with data derived from database.
  */
 public class LocationAdapter extends ArrayAdapter<LocationData> {
-    private Context context;
-    private List list;
-    private ListView listView;
+    private final Context context;
+    private final List list;
 
     class LocationViewHolder {
         private TextView location_key;
         private TextView location_name;
         private TextView location_Type;
         private TextView location_Longitude;
-        private TextView location_Latiude;
+        private TextView location_Latitude;
         private TextView location_address;
         private TextView location_phone;
     }
@@ -40,11 +37,11 @@ public class LocationAdapter extends ArrayAdapter<LocationData> {
      * @param list an object of List class with LocationData data type
      * @param listView an object of ListView class
      */
+    @SuppressWarnings({"unused", "AssignmentOrReturnOfFieldWithMutableType"})
     public LocationAdapter(Context context, List<LocationData> list, ListView listView) {
         super(context, 0, list);
         this.context = context;
         this.list = list;
-        this.listView = listView;
     }
 
     /**
@@ -54,6 +51,7 @@ public class LocationAdapter extends ArrayAdapter<LocationData> {
      * @param parent an object of ViewGroup class
      * @return an object of view class
      */
+    @SuppressWarnings({"FeatureEnvy", "OverlyLongMethod", "ChainedMethodCall"})
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -65,13 +63,13 @@ public class LocationAdapter extends ArrayAdapter<LocationData> {
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             rowView = layoutInflater.inflate(R.layout.layout_location_row, parent,false);
             viewHolder = new LocationViewHolder();
-            viewHolder.location_key = (TextView) rowView.findViewById(R.id.textView_key_value);
-            viewHolder.location_name = (TextView) rowView.findViewById(R.id.textView_name_value);
-            viewHolder.location_Type = (TextView) rowView.findViewById(R.id.textView_type_value);
-            viewHolder.location_Longitude = (TextView) rowView.findViewById(R.id.textView_longitude_value);
-            viewHolder.location_Latiude = (TextView) rowView.findViewById(R.id.textView_latitude_value);
-            viewHolder.location_address = (TextView) rowView.findViewById(R.id.textView_address_value);
-            viewHolder.location_phone = (TextView) rowView.findViewById(R.id.textView_phone_value);
+            viewHolder.location_key = rowView.findViewById(R.id.textView_key_value);
+            viewHolder.location_name = rowView.findViewById(R.id.textView_name_value);
+            viewHolder.location_Type = rowView.findViewById(R.id.textView_type_value);
+            viewHolder.location_Longitude = rowView.findViewById(R.id.textView_longitude_value);
+            viewHolder.location_Latitude = rowView.findViewById(R.id.textView_latitude_value);
+            viewHolder.location_address = rowView.findViewById(R.id.textView_address_value);
+            viewHolder.location_phone = rowView.findViewById(R.id.textView_phone_value);
 
             rowView.setTag(viewHolder);
             Status = "created";
@@ -89,7 +87,7 @@ public class LocationAdapter extends ArrayAdapter<LocationData> {
         viewHolder.location_name.setText(locationData.getLocation_name());
         viewHolder.location_Type.setText(locationData.getLocation_type());
         viewHolder.location_Longitude.setText(locationData.getLongitude());
-        viewHolder.location_Latiude.setText(locationData.getLatitude());
+        viewHolder.location_Latitude.setText(locationData.getLatitude());
         viewHolder.location_address.setText(locationData.getAddress());
         viewHolder.location_phone.setText(locationData.getPhone_number());
         Log.d("@@@", "row view is " + Status + ", tag = " + tag);

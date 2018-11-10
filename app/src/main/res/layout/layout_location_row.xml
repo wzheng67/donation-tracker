@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -16,7 +18,8 @@
                 android:id="@+id/textView_key"
                 android:layout_width="79dp"
                 android:layout_height="match_parent"
-                android:text="Key" />
+                android:text="Key"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textView_key_value"
@@ -32,7 +35,8 @@
                 android:id="@+id/textView_Name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Name" />
+                android:text="Name"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textView_name_value"
@@ -48,7 +52,8 @@
                 android:id="@+id/textView_type"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Type" />
+                android:text="Type"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textView_type_value"
@@ -64,7 +69,8 @@
                 android:id="@+id/textView_longitude"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Longitude" />
+                android:text="Longitude"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textView_longitude_value"
@@ -80,7 +86,8 @@
                 android:id="@+id/textView_latitude"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Latitude" />
+                android:text="Latitude"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textView_latitude_value"
@@ -97,7 +104,8 @@
                 android:id="@+id/textView_address"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Address" />
+                android:text="Address"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textView_address_value"
@@ -113,7 +121,8 @@
                 android:id="@+id/textView_phone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Phone" />
+                android:text="Phone"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/textView_phone_value"

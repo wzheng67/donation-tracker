@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="match_parent"
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -8,12 +9,14 @@
         android:id="@+id/btn_capture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Take a picture" />
+        android:text="Take a picture"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/btn_album"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Open from album" />
+        android:text="Open from album"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

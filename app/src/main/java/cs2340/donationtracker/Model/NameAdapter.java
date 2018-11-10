@@ -1,10 +1,8 @@
 package cs2340.donationtracker.Model;
 
 import android.content.Context;
-import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +17,13 @@ import cs2340.donationtracker.R;
 /**
  * This class displays name of items based on data derived from database.
  */
+@SuppressWarnings({"unused", "FieldCanBeLocal"})
 public class NameAdapter extends ArrayAdapter<LocationData> {
-    private Context context;
-    private List list;
-    private ListView listView;
+    private final Context context;
+    private final List list;
+    private final ListView listView;
 
+    @SuppressWarnings("PublicField")
     class LocationViewHolder {
         public TextView location_name;
         public TextView location_phone;
@@ -35,6 +35,7 @@ public class NameAdapter extends ArrayAdapter<LocationData> {
      * @param list an object of List class
      * @param listView an object of ListView class
      */
+    @SuppressWarnings("AssignmentOrReturnOfFieldWithMutableType")
     public NameAdapter(Context context, List<LocationData> list, ListView listView) {
         super(context, 0, list);
         this.context = context;
@@ -49,6 +50,7 @@ public class NameAdapter extends ArrayAdapter<LocationData> {
      * @param parent an object of ViewGroup
      * @return View view of nameAdapter
      */
+    @SuppressWarnings("ChainedMethodCall")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -60,8 +62,8 @@ public class NameAdapter extends ArrayAdapter<LocationData> {
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             rowView = layoutInflater.inflate(R.layout.layout_location_basic, parent,false);
             viewHolder = new LocationViewHolder();
-            viewHolder.location_name = (TextView) rowView.findViewById(R.id.textView_name_value_basic);
-            viewHolder.location_phone = (TextView) rowView.findViewById(R.id.textView_phone_value_basic);
+            viewHolder.location_name = rowView.findViewById(R.id.textView_name_value_basic);
+            viewHolder.location_phone = rowView.findViewById(R.id.textView_phone_value_basic);
 
             rowView.setTag(viewHolder);
             Status = "created";

@@ -4,26 +4,21 @@ import java.util.Collection;
 import java.util.regex.Pattern;
 
 public class Verification {
+    @SuppressWarnings("TypeMayBeWeakened")
     public boolean verifyPassword(String password) {
-        if (password == null) {
-            return false;
-        }
-        if (password.length() < 6) {
-            return false;
-        }
-        return true;
+        return (password != null) && (password.length() >= 6);
     }
+    @SuppressWarnings({"TypeMayBeWeakened", "ChainedMethodCall"})
     public boolean verifyEmail(String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
                 "[a-zA-Z0-9_+&*-]+)*@" +
                 "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
                 "A-Z]{2,7}$";
 
         Pattern pat = Pattern.compile(emailRegex);
-        if (email == null)
-            return false;
-        return pat.matcher(email).matches();
+        return (email != null) && pat.matcher(email).matches();
     }
+    @SuppressWarnings("TypeMayBeWeakened")
     public boolean isValidEmail(String email, Collection<User> users) {
         for (User s : users) {
             if (email.equals(s.getEmail())) {

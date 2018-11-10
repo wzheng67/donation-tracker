@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,7 +18,8 @@
         android:text="See Google Map"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_checkItems_user" />
+        app:layout_constraintTop_toBottomOf="@+id/button_checkItems_user"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView20"
@@ -30,7 +32,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/button_checkItems_user"
@@ -44,7 +47,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_locationInfo3" />
+        app:layout_constraintTop_toBottomOf="@+id/button_locationInfo3"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/button8"
@@ -61,7 +65,8 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_map_user"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintVertical_bias="0.038"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/button_locationInfo3"
@@ -71,8 +76,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="36dp"
         android:onClick="goLocation"
-        android:text="Check Location infomation"
+        android:text="Check Location information"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        tools:ignore="HardcodedText" />
 </android.support.constraint.ConstraintLayout>

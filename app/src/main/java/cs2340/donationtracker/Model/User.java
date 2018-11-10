@@ -7,6 +7,7 @@ import android.os.Parcelable;
 /**
  * implementation of user class
  */
+@SuppressWarnings("ALL")
 public class User implements Parcelable{
     private String email;
     private String username;
@@ -52,7 +53,7 @@ public class User implements Parcelable{
      * getter for username
      * @return username
      */
-    public String getUsername() { return username; }
+    private String getUsername() { return username; }
 
     /**
      * setter for username
@@ -64,6 +65,7 @@ public class User implements Parcelable{
      * getter for password
      * @return password
      */
+    @SuppressWarnings("unused")
     public String getPassword() { return password; }
 
     /**
@@ -101,6 +103,7 @@ public class User implements Parcelable{
      * @param o
      * @return
      */
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     @Override
     public boolean equals(Object o) {
         User c = (User) o;
@@ -127,10 +130,12 @@ public class User implements Parcelable{
 
     public static final Parcelable.Creator<User> CREATOR
             = new Parcelable.Creator<User>() {
+        @Override
         public User createFromParcel(Parcel in) {
             return new User(in);
         }
 
+        @Override
         public User[] newArray(int size) {
             return new User[size];
         }

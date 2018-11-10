@@ -19,8 +19,10 @@ import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+@SuppressWarnings({"ConstantConditions", "CyclicClassDependency", "ChainedMethodCall"})
 public class MapLocation extends AppCompatActivity implements OnMapReadyCallback {
 
+    @SuppressWarnings("ChainedMethodCall")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,7 @@ public class MapLocation extends AppCompatActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
     }
+    @SuppressWarnings("FeatureEnvy")
     @Override
     public void onMapReady(final GoogleMap googleMap) {
         LatLng[] donationCenters = new LatLng[Location.locationList.size()];
@@ -48,6 +51,7 @@ public class MapLocation extends AppCompatActivity implements OnMapReadyCallback
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(donationCenters[0]));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(10));
     }
+    @SuppressWarnings({"unused", "LawOfDemeter", "ChainedMethodCall"})
     public void goBack(View v) {
         if (CurrentUser.getInstance().getUserType() == User_type.USER) {
             Intent intent = new Intent(this, MainApplication_user.class);

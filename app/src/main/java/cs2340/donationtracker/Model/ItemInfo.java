@@ -1,10 +1,9 @@
 package cs2340.donationtracker.Model;
 
-import cs2340.donationtracker.Controllers.Location;
-
 /**
  * implementation of information of items
  */
+@SuppressWarnings("ALL")
 public class ItemInfo {
     private String timeStamp;
 

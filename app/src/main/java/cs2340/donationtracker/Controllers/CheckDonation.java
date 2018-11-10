@@ -32,6 +32,7 @@ import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("ALL")
 public class CheckDonation extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private List<String> searchList;
@@ -42,6 +43,7 @@ public class CheckDonation extends AppCompatActivity {
 
     private final String ALL_LOCATIONS = "All Locations";
     private final String ALL_Categories = "All Categories";
+    @SuppressWarnings("ChainedMethodCall")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +63,7 @@ public class CheckDonation extends AppCompatActivity {
         initCategoryAndLocationList();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("item").addValueEventListener(new ValueEventListener() {
+            @SuppressWarnings("LawOfDemeter")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<ItemInfo> list = CurrentItems.getInstance().getItemList();
@@ -91,7 +94,7 @@ public class CheckDonation extends AppCompatActivity {
         }
     }
     private void initSearchTextView() {
-        final EditText textView = (EditText) findViewById(R.id.searchByName);
+        final EditText textView = findViewById(R.id.searchByName);
         textView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -143,12 +146,12 @@ public class CheckDonation extends AppCompatActivity {
             }
         });
     }
+    @SuppressWarnings({"SpellCheckingInspection", "FeatureEnvy", "OverlyComplexMethod", "TypeMayBeWeakened", "LawOfDemeter"})
     private void display() {
-        ListView itemListview = (ListView) findViewById(R.id.listview_location);
+        ListView itemListview = findViewById(R.id.listView_location);
         List<ItemInfo> tempList = new LinkedList<>();
 
         for (ItemInfo i : CurrentItems.getInstance().getItemList()) {
-            System.out.println(i.getLocationData());
             if (currentCategory.equals(ALL_Categories)
                     && isVaildKeyword(i.getShortDescription())
                     && currentLocation.equals(ALL_LOCATIONS)) {
@@ -161,7 +164,8 @@ public class CheckDonation extends AppCompatActivity {
                     && isVaildKeyword(i.getShortDescription())
                     && currentLocation.equals(ALL_LOCATIONS)) {
                 tempList.add(i);
-            } else if (i.getCategory().toString().equals(currentCategory)
+            } else //noinspection LawOfDemeter
+                if (i.getCategory().toString().equals(currentCategory)
                     && isVaildKeyword(i.getShortDescription())
                     && i.getLocationData().getLocation_name().equals(currentLocation)) {
                 tempList.add(i);
@@ -170,6 +174,7 @@ public class CheckDonation extends AppCompatActivity {
         ItemInfoAdapter itemInfoAdapter = new ItemInfoAdapter(this, tempList, itemListview);
         itemListview.setAdapter(itemInfoAdapter);
     }
+    @SuppressWarnings({"RedundantIfStatement", "SpellCheckingInspection"})
     private boolean isVaildKeyword(String i) {
         if (!searchKeyword.isEmpty()) {
             String a = searchKeyword.toLowerCase();
@@ -188,6 +193,7 @@ public class CheckDonation extends AppCompatActivity {
             return true;
         }
     }
+    @SuppressWarnings({"unused", "LawOfDemeter"})
     public void goBack(View v) {
         if (CurrentUser.getInstance().getUserType() == User_type.USER) {
             Intent intent = new Intent(this, MainApplication_user.class);

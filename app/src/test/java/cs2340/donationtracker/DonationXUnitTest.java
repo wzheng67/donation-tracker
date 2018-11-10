@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 
-import cs2340.donationtracker.Model.Model;
 import cs2340.donationtracker.Model.Sha256;
 import cs2340.donationtracker.Model.User;
 import cs2340.donationtracker.Model.User_type;
@@ -18,8 +17,8 @@ import static org.junit.Assert.*;
  */
 @SuppressWarnings("SpellCheckingInspection")
 public class DonationXUnitTest {
-    Sha256 hashFunction;
-    Verification verification;
+    private Sha256 hashFunction;
+    private Verification verification;
     
     @Before
     public void setUp() {
@@ -27,6 +26,7 @@ public class DonationXUnitTest {
         verification = new Verification();
 
     }
+    @SuppressWarnings("AccessStaticViaInstance")
     @Test
     public void testPasswordEncryption() {
         assertEquals("The hash function for Encryption is incorrectly working.",
@@ -47,6 +47,7 @@ public class DonationXUnitTest {
         assertFalse("The method to verify whether the form of a password is incorrectly working.",
                 verification.verifyPassword("sd"));
     }
+    @SuppressWarnings("FeatureEnvy")
     @Test
     public void verifyUserEqualsMethodIsOverriden() {
         User a = new User();
@@ -60,6 +61,7 @@ public class DonationXUnitTest {
         b.setUsername("Daewoong");
         assertTrue("The equals method in User class is not overriden",a.equals(b));
     }
+    @SuppressWarnings({"CollectionDeclaredAsConcreteClass", "FeatureEnvy", "TypeMayBeWeakened"})
     @Test
     public void checkFindByEmail() {
         User a = new User();

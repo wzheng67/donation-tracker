@@ -19,7 +19,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_locationInfo" />
+        app:layout_constraintTop_toBottomOf="@+id/button_locationInfo"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/button_add_donation"
@@ -32,7 +33,8 @@
         android:text="Add Donation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_checkItems" />
+        app:layout_constraintTop_toBottomOf="@+id/button_checkItems"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/button_map"
@@ -45,7 +47,8 @@
         android:text="See Google Map"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_add_donation" />
+        app:layout_constraintTop_toBottomOf="@+id/button_add_donation"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView"
@@ -58,7 +61,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/button"
@@ -75,18 +79,20 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_map"
-        app:layout_constraintVertical_bias="0.024" />
+        app:layout_constraintVertical_bias="0.024"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/button_locationInfo"
         android:layout_width="230dp"
-        android:layout_height="51dp"
+        android:layout_height="52dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="48dp"
         android:onClick="goLocation"
-        android:text="Check Location infomation"
+        android:text="Check Location information"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="HardcodedText" />
 </android.support.constraint.ConstraintLayout>

@@ -3,6 +3,7 @@ package cs2340.donationtracker.Model;
 /**
  * implementation of list of current users
  */
+@SuppressWarnings("ALL")
 public class CurrentUser {
     private static final CurrentUser ourInstance = new CurrentUser();
 
