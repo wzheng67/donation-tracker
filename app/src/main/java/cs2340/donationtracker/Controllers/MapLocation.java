@@ -19,6 +19,9 @@ import cs2340.donationtracker.Model.LocationData;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+/**
+ * implementation of location display
+ */
 @SuppressWarnings({"ConstantConditions", "CyclicClassDependency", "ChainedMethodCall"})
 public class MapLocation extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -32,6 +35,7 @@ public class MapLocation extends AppCompatActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
     }
+
     @SuppressWarnings("FeatureEnvy")
     @Override
     public void onMapReady(final GoogleMap googleMap) {
@@ -51,6 +55,11 @@ public class MapLocation extends AppCompatActivity implements OnMapReadyCallback
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(donationCenters[0]));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(10));
     }
+
+    /**
+     * This method displays previous page to users.
+     * @param v an object of View class.
+     */
     @SuppressWarnings({"unused", "LawOfDemeter", "ChainedMethodCall"})
     public void goBack(View v) {
         if (CurrentUser.getInstance().getUserType() == User_type.USER) {

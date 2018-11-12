@@ -70,25 +70,33 @@
         </activity>
         <activity android:name=".Controllers.Login"
             tools:ignore="InnerclassSeparator" />
-        <activity android:name=".Controllers.FailedLogin" />
+        <activity android:name=".Controllers.FailedLogin"
+            tools:ignore="InnerclassSeparator" />
         <activity android:name=".Controllers.MainApplication"
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".Controllers.Location"
             tools:ignore="InnerclassSeparator" />
-        <activity android:name=".Controllers.Registration" />
-        <activity android:name=".Controllers.Location_display" />
-        <activity android:name=".Controllers.AddDonation" />
-        <activity android:name=".Controllers.Registration_admin" />
+        <activity android:name=".Controllers.Registration"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".Controllers.Location_display"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".Controllers.AddDonation"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".Controllers.Registration_admin"
+            tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".Controllers.MainApplication_user"
-            android:label="@string/title_activity_main_application_user" />
+            android:label="@string/title_activity_main_application_user"
+            tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".Controllers.CheckDonation"
             android:label="@string/title_activity_check_donation"
             tools:ignore="InnerclassSeparator" />
-        <activity android:name=".Controllers.MapLocation" />
+        <activity android:name=".Controllers.MapLocation"
+            tools:ignore="InnerclassSeparator" />
         <activity android:name=".Controllers.CameraCropActivity"
-            android:theme="@style/Theme.AppCompat.Dialog"/>
+            android:theme="@style/Theme.AppCompat.Dialog"
+            tools:ignore="InnerclassSeparator" />
 
     </application>
 

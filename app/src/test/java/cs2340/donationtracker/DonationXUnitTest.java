@@ -19,13 +19,19 @@ import static org.junit.Assert.*;
 public class DonationXUnitTest {
     private Sha256 hashFunction;
     private Verification verification;
-    
+
+    /**
+     * set up method for hash function and verification.
+     */
     @Before
     public void setUp() {
         hashFunction = new Sha256();
         verification = new Verification();
-
     }
+
+    /**
+     * This method tests whether passwords are encrypted correctly.
+     */
     @SuppressWarnings("AccessStaticViaInstance")
     @Test
     public void testPasswordEncryption() {
@@ -33,6 +39,10 @@ public class DonationXUnitTest {
                 "6afeed38373c3bd2d8c26fc811c46309fd94f45cb371ddafc12f47148e47326e",
                 hashFunction.encrypt("eo0402"));
     }
+
+    /**
+     * This method checks whetehr the form of an email is valid.
+     */
     @Test
     public void verifyEmail() {
         assertTrue("The method to verify whether the form of an email is incorrectly working.",
@@ -40,6 +50,11 @@ public class DonationXUnitTest {
         assertFalse("The method to verify whether the form of an email is incorrectly working.",
                 verification.verifyEmail("hahagmail.com"));
     }
+
+
+    /**
+     * This method checks whether a form of password is valid.
+     */
     @Test
     public void verifyPassword() {
         assertTrue("The method to verify whether the form of a password is incorrectly working.",
@@ -47,6 +62,11 @@ public class DonationXUnitTest {
         assertFalse("The method to verify whether the form of a password is incorrectly working.",
                 verification.verifyPassword("sd"));
     }
+
+    /**
+     * This method tests whether users with same username with different type of user appers to
+     * be the same.
+     */
     @SuppressWarnings("FeatureEnvy")
     @Test
     public void verifyUserEqualsMethodIsOverriden() {
@@ -61,6 +81,10 @@ public class DonationXUnitTest {
         b.setUsername("Daewoong");
         assertTrue("The equals method in User class is not overriden",a.equals(b));
     }
+
+    /**
+     * This method finds a user with user's email.
+     */
     @SuppressWarnings({"CollectionDeclaredAsConcreteClass", "FeatureEnvy", "TypeMayBeWeakened"})
     @Test
     public void checkFindByEmail() {
