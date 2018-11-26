@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -7,7 +8,8 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -18,7 +20,9 @@
                 android:layout_width="79dp"
                 android:layout_height="match_parent"
                 android:text="Key"
+
                 android:textColor="@color/buttoncolor"/>
+
 
             <TextView
                 android:id="@+id/textView_key_value"
@@ -36,9 +40,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Name"
-                android:textColor="@color/buttoncolor"/>
 
-            <TextView
+                android:textColor="@color/buttoncolor"/>
+<TextView
                 android:id="@+id/textView_name_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,7 +58,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Type"
+
                 android:textColor="@color/buttoncolor"/>
+
 
             <TextView
                 android:id="@+id/textView_type_value"
@@ -72,7 +78,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Longitude"
+
                 android:textColor="@color/buttoncolor"/>
+
 
             <TextView
                 android:id="@+id/textView_longitude_value"
@@ -90,7 +98,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Latitude"
+
                 android:textColor="@color/buttoncolor"/>
+
 
             <TextView
                 android:id="@+id/textView_latitude_value"
@@ -109,7 +119,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Address"
+
                 android:textColor="@color/buttoncolor"/>
+
 
             <TextView
                 android:id="@+id/textView_address_value"
@@ -127,7 +139,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Phone"
+
                 android:textColor="@color/buttoncolor"/>
+
 
             <TextView
                 android:id="@+id/textView_phone_value"

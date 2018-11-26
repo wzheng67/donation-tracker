@@ -1,7 +1,5 @@
 package cs2340.donationtracker.Controllers;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +14,8 @@ import android.widget.TextView;
 
 import cs2340.donationtracker.R;
 
-public class Welcomescreen extends AppCompatActivity {
+@SuppressWarnings("ALL")
+public class WelcomeScreen extends AppCompatActivity {
 
     private Button login;
     private Button register;
@@ -28,16 +27,17 @@ public class Welcomescreen extends AppCompatActivity {
     private Animation fadeInIcon;
     private Animation fadeInText;
 
+    @SuppressWarnings("AssignmentToStaticFieldFromInstanceMethod")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Location.locationList = Location.getLocationData(this);
-        setContentView(R.layout.activity_welcomescreen);
+        setContentView(R.layout.activity_welcome_screen);
 
-        imageView = (ImageView) findViewById(R.id.imageView2);
-        text = (TextView) findViewById(R.id.editText3);
-        login = (Button) findViewById(R.id.Login);
-        register = (Button ) findViewById(R.id.Registration);
+        imageView = findViewById(R.id.imageView2);
+        text = findViewById(R.id.editText3);
+        login = findViewById(R.id.Login);
+        register = findViewById(R.id.Registration);
 
         frombottom1 = AnimationUtils.loadAnimation(this, R.anim.from_bottom);
         frombottom2 = AnimationUtils.loadAnimation(this, R.anim.from_bottom);
@@ -60,53 +60,6 @@ public class Welcomescreen extends AppCompatActivity {
         frombottom2.setStartOffset((3100));
         register.setAnimation(frombottom2);
 
-
-
-
-
-//                imageViewsetAnimationListener(new Animation.AnimationListener() {
-//            @Override
-//            public void onAnimationStart(Animation animation) {
-//
-//            }
-//
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//                finish();
-//                startActivity(new Intent(getApplicationContext(), Welcomescreen.class));
-//            }
-//
-//            @Override
-//            public void onAnimationRepeat(Animation animation) {
-//
-//            }
-//        });
-
-//        final Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
-//        imageView.setAnimation(startAnimation);
-
-//        startAnimation.setAnimationListener(new Animation.AnimationListener() {
-//            @Override
-//            public void onAnimationStart(Animation animation) {
-//
-//            }
-//
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//                finish();
-//                startActivity(new Intent(getApplicationContext(), Welcomescreen.class));
-//            }
-//
-//            @Override
-//            public void onAnimationRepeat(Animation animation) {
-//
-//            }
-//        });
-//
-//    }
-//
-////    public void startFadeInAnimation(View view) {
-////
     }
     public void goToLogin(View v) {
         Intent intent = new Intent(this, Login.class);

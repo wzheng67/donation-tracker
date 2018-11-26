@@ -5,7 +5,17 @@ package cs2340.donationtracker.Model;
 
 import java.security.MessageDigest;
 
-public class Sha256 {   // this class encrypt a String with the system SHA256.
+/**
+ * implementation of encryption of a String with the system SHA256.
+ */
+@SuppressWarnings("ALL")
+public class Sha256 {
+    /**
+     * This method encrypts a String with the system SHA256.
+     * @param planText a string which will be encrypted.
+     * @return a encrypted String
+     */
+    @SuppressWarnings("MagicNumber")
     public static String encrypt(String planText) {
         try{
             MessageDigest md = MessageDigest.getInstance("SHA-256");

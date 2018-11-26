@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress LongLine -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Controllers.Welcomescreen"
+    tools:context=".Controllers.WelcomeScreen"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
@@ -24,7 +25,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,TextViewEdits" />
 
     <ImageView
         android:id="@+id/imageView2"

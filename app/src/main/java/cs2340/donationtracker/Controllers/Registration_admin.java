@@ -23,5 +23,4 @@ public class Registration_admin extends Activity {
         fadeInText.setDuration(1800);
         text.startAnimation(fadeInText);
     }
-
 }

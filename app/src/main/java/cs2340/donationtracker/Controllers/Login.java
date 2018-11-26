@@ -26,14 +26,15 @@ import cs2340.donationtracker.Model.User;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+@SuppressWarnings("ALL")
 public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    DatabaseReference databaseReference;
-    final String TAG = "Login";
+    private DatabaseReference databaseReference;
+    private final String TAG = "Login";
 
 
-    EditText email;
-    EditText pass;
+    private EditText email;
+    private EditText pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,18 +54,23 @@ public class Login extends AppCompatActivity {
         }
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @SuppressWarnings("LongLine")
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             final FirebaseUser user = mAuth.getCurrentUser();
+                            assert user != null;
                             final String uId = user.getUid();
                             databaseReference = FirebaseDatabase.getInstance().getReference();
-                            databaseReference.child("account").child(uId).addListenerForSingleValueEvent(new ValueEventListener() {
+                            databaseReference.child("account").child(uId)
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                @SuppressWarnings({"LawOfDemeter", "ChainedMethodCall"})
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     User mUser = dataSnapshot.getValue(User.class);
+                                    //noinspection ChainedMethodCall,ChainedMethodCall
                                     CurrentUser.getInstance().setUserType(mUser.getType());
                                     if (mUser.getType() == User_type.USER) {
                                         goToMainApplication_user();
@@ -110,6 +116,7 @@ public class Login extends AppCompatActivity {
 
         return valid;
     }
+    @SuppressWarnings("unused")
     public void loginAttempt(View v) {
         signIn(email.getText().toString(), pass.getText().toString());
     }
@@ -126,8 +133,9 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @SuppressWarnings("unused")
     public void goBack(View v) {
-        Intent intent = new Intent(this, Welcomescreen.class);
+        Intent intent = new Intent(this, WelcomeScreen.class);
         startActivity(intent);
     }
 }

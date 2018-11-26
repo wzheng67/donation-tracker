@@ -10,7 +10,6 @@ import android.view.View;
 
 import com.opencsv.CSVReader;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -22,17 +21,25 @@ import cs2340.donationtracker.Model.NameAdapter;
 import cs2340.donationtracker.Model.User_type;
 import cs2340.donationtracker.R;
 
+/**
+ * implementation of location class
+ */
+@SuppressWarnings({"WeakerAccess", "FieldCanBeLocal", "NestedAssignment", "CyclicClassDependency"})
 public class Location extends AppCompatActivity {
+    @SuppressWarnings("PublicField")
     public static List<LocationData> locationList = new ArrayList<>();
-    public ListView listview;
+    private ListView listview;
+    @SuppressWarnings("RedundantFieldInitialization")
     private static boolean isCreated = false;
+    @SuppressWarnings("TypeMayBeWeakened")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
-        listview = (ListView) findViewById(R.id.listview_location);
-        NameAdapter NameAdapter = new NameAdapter(this, getLocationData(this), listview);
+        listview = findViewById(R.id.listView_location);
+        NameAdapter NameAdapter = new NameAdapter(this, getLocationData(this),
+                listview);
         listview.setAdapter(NameAdapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -42,18 +49,26 @@ public class Location extends AppCompatActivity {
         });
     }
 
+    /**
+     * This class returns a list of location data.
+     * @param context an object of Context class
+     * @return location data
+     */
+    @SuppressWarnings({"UnusedAssignment", "NestedAssignment",
+            "AssignmentOrReturnOfFieldWithMutableType", "ChainedMethodCall"})
     public static List<LocationData> getLocationData(Context context) {
         if (!isCreated) {
             try {
-                CSVReader reader = new CSVReader(new InputStreamReader(context.getAssets().open("LocationData.csv")));
+                CSVReader reader = new CSVReader(new InputStreamReader(context.getAssets().
+                        open("LocationData.csv")));
                 String[] nextLine;
                 nextLine = reader.readNext();
                 while ((nextLine = reader.readNext()) != null) {
-                    String address = nextLine[4] + "," + nextLine[5] + "," + nextLine[6] + "," + nextLine[7];
-                    locationList.add(new LocationData(nextLine[0], nextLine[1], nextLine[8], nextLine[3], nextLine[2], address, nextLine[9]));
+                    String address = nextLine[4] + "," + nextLine[5] + "," + nextLine[6] + "," +
+                            nextLine[7];
+                    locationList.add(new LocationData(nextLine[0], nextLine[1], nextLine[8],
+                            nextLine[3], nextLine[2], address, nextLine[9]));
                 }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -61,7 +76,14 @@ public class Location extends AppCompatActivity {
         }
         return locationList;
     }
+
+    /**
+     * This method takes user to previous page.
+     * @param v an object of View class
+     */
+    @SuppressWarnings({"unused", "ChainedMethodCall"})
     public void goBack(View v) {
+        //noinspection LawOfDemeter
         if (CurrentUser.getInstance().getUserType() == User_type.USER) {
             Intent intent = new Intent(this, MainApplication_user.class);
             startActivity(intent);
@@ -70,7 +92,7 @@ public class Location extends AppCompatActivity {
             startActivity(intent);
         }
     }
-    public void goLocationDisplay(int position) {
+    private void goLocationDisplay(int position) {
         Intent intent = new Intent(this, Location_display.class);
         intent.putExtra("Item_position", position);
         startActivity(intent);

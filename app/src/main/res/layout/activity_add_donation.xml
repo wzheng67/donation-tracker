@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,7 +54,6 @@
                     android:layout_marginEnd="30dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    app:layout_constraintBottom_toTopOf="@+id/sDescriptionText_value"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -101,13 +102,13 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:text="Location"
-                    app:layout_constraintBottom_toTopOf="@+id/sDescriptionText_value"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.441"
                     app:layout_constraintStart_toEndOf="@+id/textView13"
                     app:layout_constraintTop_toBottomOf="@+id/textView3"
                     app:layout_constraintVertical_bias="0.0"
                     android:textColor="@color/buttoncolor"/>
+
 
                 <TextView
                     android:id="@+id/textView15"
@@ -118,7 +119,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:text="Category"
-                    app:layout_constraintBottom_toTopOf="@+id/textView16"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.272"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -150,7 +150,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView13"
-                    app:layout_constraintVertical_bias="0.093" />
+                    app:layout_constraintVertical_bias="0.093"
+                    tools:ignore="ContentDescription" />
 
                 <EditText
                     android:id="@+id/valueText_value"
@@ -168,7 +169,8 @@
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toBottomOf="@+id/textView9"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="LabelFor" />
 
             </android.support.constraint.ConstraintLayout>
 
@@ -188,7 +190,8 @@
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView16"
+                    tools:ignore="LabelFor" />
 
                 <EditText
                     android:id="@+id/fDescriptionText_value"
@@ -200,7 +203,8 @@
                     android:inputType="textMultiLine"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView17"
+                    tools:ignore="LabelFor" />
 
                 <TextView
                     android:id="@+id/textView17"
@@ -244,7 +248,8 @@
                     app:layout_constraintHorizontal_bias="0.508"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView18"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="LabelFor" />
 
                 <TextView
                     android:id="@+id/textView16"
@@ -257,8 +262,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.032"
                     app:layout_constraintStart_toStartOf="parent"
+
                     app:layout_constraintTop_toBottomOf="@+id/imageView"
                     android:textColor="@color/buttoncolor"/>
+
 
                 <Button
                     android:id="@+id/addButton"
@@ -276,6 +283,7 @@
                     android:textColor="@color/buttoncolor"
                     android:textSize="18sp"/>
 
+
                 <Button
                     android:id="@+id/CancelButton"
                     android:layout_width="wrap_content"
@@ -292,8 +300,10 @@
                     app:layout_constraintStart_toEndOf="@+id/addButton"
                     app:layout_constraintTop_toBottomOf="@+id/commentsText_value"
                     app:layout_constraintVertical_bias="0.0"
+
                     android:textColor="@color/buttoncolor"
                     android:textSize="18sp"/>
+
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
