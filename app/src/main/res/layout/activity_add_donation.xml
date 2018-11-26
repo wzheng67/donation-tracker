@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.AddDonation">
+    tools:context=".Controllers.AddDonation"
+    android:background="@drawable/background">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,7 +36,8 @@
                     android:textSize="30sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textColor="@color/buttoncolor"/>
 
                 <android.support.constraint.Group
                     android:id="@+id/group"
@@ -55,7 +57,8 @@
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toBottomOf="@+id/textView15"
-                    app:layout_constraintVertical_bias="0.031" />
+                    app:layout_constraintVertical_bias="0.031"
+                    />
 
                 <TextView
                     android:id="@+id/textView13"
@@ -71,7 +74,8 @@
                     app:layout_constraintHorizontal_bias="0.028"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView3"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:textColor="@color/buttoncolor"/>
 
                 <Spinner
                     android:id="@+id/locationSpinner"
@@ -102,7 +106,8 @@
                     app:layout_constraintHorizontal_bias="0.441"
                     app:layout_constraintStart_toEndOf="@+id/textView13"
                     app:layout_constraintTop_toBottomOf="@+id/textView3"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:textColor="@color/buttoncolor"/>
 
                 <TextView
                     android:id="@+id/textView15"
@@ -118,7 +123,8 @@
                     app:layout_constraintHorizontal_bias="0.272"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toBottomOf="@+id/locationSpinner"
-                    app:layout_constraintVertical_bias="0.242" />
+                    app:layout_constraintVertical_bias="0.242"
+                    android:textColor="@color/buttoncolor"/>
 
                 <TextView
                     android:id="@+id/textView9"
@@ -130,7 +136,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/textView15"
-                    app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
+                    app:layout_constraintTop_toBottomOf="@+id/categorySpinner"
+                    android:textColor="@color/buttoncolor"/>
 
                 <ImageView
                     android:id="@+id/imageView"
@@ -206,7 +213,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.032"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sDescriptionText_value" />
+                    app:layout_constraintTop_toBottomOf="@+id/sDescriptionText_value"
+                    android:textColor="@color/buttoncolor"/>
 
                 <TextView
                     android:id="@+id/textView18"
@@ -218,7 +226,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.052"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fDescriptionText_value" />
+                    app:layout_constraintTop_toBottomOf="@+id/fDescriptionText_value"
+                    android:textColor="@color/buttoncolor"/>
 
                 <EditText
                     android:id="@+id/commentsText_value"
@@ -248,7 +257,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.032"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView"
+                    android:textColor="@color/buttoncolor"/>
 
                 <Button
                     android:id="@+id/addButton"
@@ -258,10 +268,13 @@
                     android:layout_marginStart="64dp"
                     android:layout_marginTop="8dp"
                     android:text="Add"
+                    android:background="@drawable/rounded_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/commentsText_value"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="1.0"
+                    android:textColor="@color/buttoncolor"
+                    android:textSize="18sp"/>
 
                 <Button
                     android:id="@+id/CancelButton"
@@ -273,11 +286,14 @@
                     android:layout_marginTop="8dp"
                     android:onClick="cancel"
                     android:text="Cancel"
+                    android:background="@drawable/rounded_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/addButton"
                     app:layout_constraintTop_toBottomOf="@+id/commentsText_value"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:textColor="@color/buttoncolor"
+                    android:textSize="18sp"/>
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

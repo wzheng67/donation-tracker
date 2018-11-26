@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.Location_display">
+    tools:context=".Controllers.Location_display"
+    android:background="@drawable/background">
 
     <Button
         android:id="@+id/button_Ldisplay_Back"
@@ -19,7 +20,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_dynamic" />
+        app:layout_constraintTop_toBottomOf="@+id/_dynamic"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/buttoncolor"
+        android:textSize="18sp"/>
 
     <ListView
         android:id="@+id/location_display"
@@ -34,5 +38,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        />
 </android.support.constraint.ConstraintLayout>

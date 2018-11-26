@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <TableLayout
         android:layout_width="match_parent"
@@ -34,14 +35,16 @@
                         android:layout_height="27dp"
                         android:layout_weight="1"
                         android:text="Item :"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/buttoncolor"/>
 
                     <TextView
                         android:id="@+id/shortDescriptionView_value"
                         android:layout_width="320dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/buttoncolor"/>
 
                 </TableRow>
 
@@ -55,7 +58,8 @@
                         android:layout_height="27dp"
                         android:layout_weight="1"
                         android:text="Categrory :"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/buttoncolor"/>
 
                     <TextView
                         android:id="@+id/categoryView_value"
@@ -63,7 +67,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="@String category"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/buttoncolor"/>
                 </TableRow>
 
                 <TableRow
@@ -76,7 +81,8 @@
                         android:layout_height="27dp"
                         android:layout_weight="1"
                         android:text="Value ($) :"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/buttoncolor"/>
 
                     <TextView
                         android:id="@+id/valueView_value"
@@ -84,7 +90,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="@ String $"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/buttoncolor"/>
 
                 </TableRow>
 
@@ -98,7 +105,8 @@
                         android:layout_height="27dp"
                         android:layout_weight="1"
                         android:text="Time :"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/buttoncolor"/>
 
                     <TextView
                         android:id="@+id/timeStampView_value"
@@ -106,7 +114,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="@String time"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/buttoncolor"/>
 
                 </TableRow>
 
@@ -124,7 +133,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=" Full Description :"
-                android:textSize="23sp" />
+                android:textSize="23sp"
+                android:textColor="@color/buttoncolor"/>
 
         </TableRow>
 
@@ -137,7 +147,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="@color/buttoncolor"/>
 
         </TableRow>
 
@@ -151,7 +162,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text=" Comments"
-                android:textSize="23sp" />
+                android:textSize="23sp"
+                android:textColor="@color/buttoncolor"/>
 
         </TableRow>
 
@@ -165,7 +177,8 @@
                 android:layout_height="27dp"
                 android:layout_weight="1"
                 android:text="@String context"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="@color/buttoncolor"/>
 
         </TableRow>
 

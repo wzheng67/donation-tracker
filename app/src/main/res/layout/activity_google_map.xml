@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.MapLocation">
+    tools:context=".Controllers.MapLocation"
+    android:background="@drawable/background">
 
     <fragment
         android:id="@+id/mapView"
@@ -31,5 +32,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.922"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/buttoncolor"
+        android:textSize="18sp"/>
 </android.support.constraint.ConstraintLayout>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.CheckDonation">
+    tools:context=".Controllers.CheckDonation"
+    android:background="@drawable/background">
 
     <Button
         android:id="@+id/button_cancel2"
@@ -16,11 +17,14 @@
         android:layout_marginTop="8dp"
         android:onClick="goBack"
         android:text="Cancel"
+        android:background="@drawable/rounded_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listview_location" />
+        app:layout_constraintTop_toBottomOf="@+id/listview_location"
+        android:textColor="@color/buttoncolor"
+        android:textSize="18sp"/>
 
     <ListView
         android:id="@+id/listview_location"
@@ -84,7 +88,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/locationSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/spinner2"
+        app:layout_constraintStart_toEndOf="@+id/locationSpinner"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.882" />
 </android.support.constraint.ConstraintLayout>

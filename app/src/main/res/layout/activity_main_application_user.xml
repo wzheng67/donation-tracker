@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.MainApplication_user">
+    tools:context=".Controllers.MainApplication_user"
+    android:background="@drawable/background">
 
     <Button
         android:id="@+id/button_map_user"
-        android:layout_width="230dp"
+        android:layout_width="250dp"
         android:layout_height="56dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -17,24 +18,31 @@
         android:text="See Google Map"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_checkItems_user" />
+        app:layout_constraintTop_toBottomOf="@+id/button_checkItems_user"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/buttoncolor"
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
-        android:layout_height="26dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
+        android:textSize="35sp"
+        android:gravity="center"
         android:text="Welcome to the Main Application!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/buttoncolor"
+        />
 
     <Button
         android:id="@+id/button_checkItems_user"
-        android:layout_width="231dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
@@ -44,11 +52,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_locationInfo3" />
+        app:layout_constraintTop_toBottomOf="@+id/button_locationInfo3"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/buttoncolor"
+        android:textSize="18sp"
+        />
 
     <Button
         android:id="@+id/button8"
-        android:layout_width="231dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="220dp"
         android:layout_marginEnd="16dp"
@@ -61,11 +73,14 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_map_user"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintVertical_bias="0.038"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/buttoncolor"
+        android:textSize="18sp"/>
 
     <Button
         android:id="@+id/button_locationInfo3"
-        android:layout_width="230dp"
+        android:layout_width="250dp"
         android:layout_height="51dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -74,5 +89,8 @@
         android:text="Check Location infomation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/buttoncolor"
+        android:textSize="18sp"/>
 </android.support.constraint.ConstraintLayout>
